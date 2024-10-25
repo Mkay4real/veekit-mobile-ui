@@ -27,10 +27,18 @@
     "verbatimModuleSyntax": true
   },
   "include": [
+    "src/**/*.tsx", 
+    "src/**/*.ts",
+    "app.d.ts", 
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
+    "app.d.ts",
+    "nativewind-env.d.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
-  ]
+  ],
+  // "exclude": [
+  //   "src/storybook/**/*.tsx"
+  //   ],
+
 }

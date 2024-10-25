@@ -11331,14 +11331,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-native-veekit-mobile-ui@workspace:."
   dependencies:
-    "@babel/plugin-proposal-export-namespace-from": ^7.18.9
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
     "@react-native/eslint-config": ^0.73.1
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^29.5.5
     "@types/react": ^18.2.44
-    babel-plugin-module-resolver: ^5.0.2
     class-variance-authority: ^0.7.0
     clsx: ^2.1.1
     commitlint: ^17.0.2
