@@ -20,3 +20,4 @@ const VeekitMobileUi = NativeModules.VeekitMobileUi
 export function multiply(a: number, b: number): Promise<number> {
   return VeekitMobileUi.multiply(a, b);
 }
+export * from './components'
