@@ -12,7 +12,13 @@ const DEFAULT_MAX = 100;
 
 const Root = React.forwardRef<RootRef, RootProps>(
   (
-    { asChild, value: valueProp, max: maxProp, getValueLabel = defaultGetValueLabel, ...props },
+    {
+      asChild,
+      value: valueProp,
+      max: maxProp,
+      getValueLabel = defaultGetValueLabel,
+      ...props
+    },
     ref
   ) => {
     const max = maxProp ?? DEFAULT_MAX;
@@ -21,7 +27,7 @@ const Root = React.forwardRef<RootRef, RootProps>(
     const Component = asChild ? Slot.View : View;
     return (
       <Component
-        role='progressbar'
+        role="progressbar"
         ref={ref}
         aria-valuemax={max}
         aria-valuemin={0}
@@ -41,10 +47,12 @@ const Root = React.forwardRef<RootRef, RootProps>(
 
 Root.displayName = 'RootProgress';
 
-const Indicator = React.forwardRef<IndicatorRef, IndicatorProps>(({ asChild, ...props }, ref) => {
-  const Component = asChild ? Slot.View : View;
-  return <Component ref={ref} role='presentation' {...props} />;
-});
+const Indicator = React.forwardRef<IndicatorRef, IndicatorProps>(
+  ({ asChild, ...props }, ref) => {
+    const Component = asChild ? Slot.View : View;
+    return <Component ref={ref} role="presentation" {...props} />;
+  }
+);
 
 Indicator.displayName = 'IndicatorProgress';
 
@@ -55,5 +63,7 @@ function defaultGetValueLabel(value: number, max: number) {
 }
 
 function isValidValueNumber(value: any, max: number): value is number {
-  return typeof value === 'number' && !isNaN(value) && value <= max && value >= 0;
+  return (
+    typeof value === 'number' && !isNaN(value) && value <= max && value >= 0
+  );
 }

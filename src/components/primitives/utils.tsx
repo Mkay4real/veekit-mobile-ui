@@ -10,13 +10,19 @@ const ToggleGroupUtils = {
     }
     return value.includes(itemValue);
   },
-  getNewSingleValue(originalValue: string | string[] | undefined, itemValue: string) {
+  getNewSingleValue(
+    originalValue: string | string[] | undefined,
+    itemValue: string
+  ) {
     if (originalValue === itemValue) {
       return undefined;
     }
     return itemValue;
   },
-  getNewMultipleValue(originalValue: string | string[] | undefined, itemValue: string) {
+  getNewMultipleValue(
+    originalValue: string | string[] | undefined,
+    itemValue: string
+  ) {
     if (originalValue === undefined) {
       return [itemValue];
     }
