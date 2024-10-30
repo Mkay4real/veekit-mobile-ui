@@ -12,6 +12,7 @@ module.exports = {
       automaticPodsInstallation: true,
     },
   }),
+  assets: ['./assets/fonts'],
   dependencies: {
     [pkg.name]: {
       root: path.join(__dirname, '..'),

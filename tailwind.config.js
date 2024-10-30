@@ -77,6 +77,12 @@ module.exports = {
         // or maybe name them after devices for `tablet:flex-row`
         tablet: '1024px',
       },
+      fontFamily: {
+        regular: ['DMSans-Regular', 'sans-serif'],
+        medium: ['DMSans-Medium', 'sans-serif'],
+        semibold: ['DMSans-SemiBold', 'sans-serif'],
+        bold: ['DMSans-Bold', 'sans-serif'],
+      },
       fontWeight: null,
       fontSize: {
         xs: 12,
