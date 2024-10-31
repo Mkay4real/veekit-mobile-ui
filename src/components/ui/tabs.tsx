@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import tw from '../../lib/tailwind';
-import { Slot } from '../primitives';
 
 interface TabProps {
   tabs: { label: string; content: React.ReactNode }[];
