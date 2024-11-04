@@ -5,3 +5,4 @@ export { type KeyPadProps, default as KeyPad } from './keypad';
 export { type AvatarProps, default as Avatar } from './avatar';
 export { default as Tabs } from './tabs';
 export { default as ListItem } from './list-item';
+export { default as FileInput } from './file-input';

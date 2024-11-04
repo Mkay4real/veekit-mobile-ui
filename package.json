@@ -84,6 +84,7 @@
     "react": "18.3.1",
     "react-native": "0.75.4",
     "react-native-builder-bob": "^0.30.2",
+    "react-native-document-picker": "^9.3.1",
     "react-native-reanimated": "^3.16.1",
     "react-native-svg": "^15.8.0",
     "release-it": "^15.0.0",
@@ -103,6 +104,7 @@
     "react-native": "*",
     "react-native-reanimated": "^3.16.1",
     "react-native-svg": "*",
+    "react-native-document-picker": "*",
     "tailwindcss": "^3.4.14"
   },
   "workspaces": [
