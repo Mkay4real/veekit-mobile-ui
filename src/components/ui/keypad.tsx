@@ -1,4 +1,4 @@
-import { useColorScheme } from 'nativewind';
+// import { useColorScheme } from 'nativewind';
 import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import DeleteIcon from '../../icons/delete';
@@ -31,8 +31,8 @@ const KeyPad: React.FC<KeyPadProps> = ({
 }) => {
   const [value, setValue] = useState('');
 
-  const { colorScheme } = useColorScheme();
-  const mode = colorScheme === 'dark' ? 'dark' : 'light';
+  // const { colorScheme } = useColorScheme();
+  // const mode = colorScheme === 'dark' ? 'dark' : 'light';
 
   const keys = [
     ['1', '2', '3'],
