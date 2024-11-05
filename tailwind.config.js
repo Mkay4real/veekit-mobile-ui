@@ -125,7 +125,7 @@ module.exports = {
   plugins: [
     plugin(({ addUtilities, theme }) => {
       const newUtilities = {}
-      const sizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl']
+      const sizes = ['xs', 'sm', 'md', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl']
       const styles = ['body', 'title', 'head', 'bold']
 
       const styleFontFamilyMap = {

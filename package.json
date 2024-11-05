@@ -102,9 +102,9 @@
     "nativewind": "^4.1.21",
     "react": "*",
     "react-native": "*",
+    "react-native-document-picker": "*",
     "react-native-reanimated": "^3.16.1",
     "react-native-svg": "*",
-    "react-native-document-picker": "*",
     "tailwindcss": "^3.4.14"
   },
   "workspaces": [
