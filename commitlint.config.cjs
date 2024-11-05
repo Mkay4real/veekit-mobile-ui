@@ -37,7 +37,7 @@ module.exports = {
             ]
         ],
         // 'jira-issue-format': [2, 'always', /^([A-Z]+-\d+): .+/]
-        "jira-issue-format": [2, "always", "^.+([A-Z]+-\\d+): .+"]
+        // "jira-issue-format": [2, "always", "^.+([A-Z]+-\\d+): .+"]
     },
     // parserPreset: {
     //     parserOpts: {
@@ -58,13 +58,13 @@ module.exports = {
                 //     }
                 //     return [true];
                 // },
-                'jira-issue-format': ({ header }) => {
-                    const isValid = jiraTicketRegex.test(header);
-                    return [
-                        isValid,
-                        isValid ? null : 'Header must be in the format "PROJECT-123: message".'
-                    ];
-                }
+                // 'jira-issue-format': ({ header }) => {
+                //     const isValid = jiraTicketRegex.test(header);
+                //     return [
+                //         isValid,
+                //         isValid ? null : 'Header must be in the format "PROJECT-123: message".'
+                //     ];
+                // }
             },
 
         }

@@ -12,7 +12,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text className="text-red-100 bg-[green]">Result: {result}</Text>
+      <Text 
+      // className="text-red-100 bg-[green]"
+      >Result: {result}</Text>
     </View>
   );
 }
