@@ -1,9 +1,9 @@
 module.exports = {
   presets: [
     ['module:react-native-builder-bob/babel-preset', { modules: 'commonjs' }],
+    // ['module:react-native-builder-bob/babel-preset', { modules: 'commonjs' }, 'nativewind/babel'],
   ],
   plugins: [
-    '@babel/plugin-proposal-export-namespace-from',
     'react-native-reanimated/plugin',
     "nativewind/babel"
   ],
