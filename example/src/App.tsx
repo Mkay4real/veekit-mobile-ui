@@ -3,13 +3,13 @@ import '../global.css';
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text as RNText, ScrollView } from 'react-native';
 import {
-  multiply,
   AppButton,
+  multiply,
+  // AppButton,
   primitives,
-  ui,
+  ui, 
 } from 'react-native-veekit-mobile-ui';
-// import { multiply, AppButton  } from 'react-native-veekit-mobile-ui';
-const { Button, Text: UIText, Input, Button2, KeyPad, Avatar, Tabs, ListItem, FileInput } = ui;
+const { Button, Text: UIText, Input, KeyPad, Avatar, Tabs, ListItem, FileInput } = ui;
 const { Slot } = primitives;
 export default function App() {
   const [result, setResult] = useState<number | undefined>();
@@ -22,7 +22,7 @@ export default function App() {
   const tabs = [
     {
       label: 'Same Bank',
-      content: <View style={{ backgroundColor: 'red', padding: 40 }} />,
+      content: <View style={{backgroundColor: 'red', padding: 40}} />,
     },
     {
       label: 'Other Banks',
@@ -34,12 +34,9 @@ export default function App() {
     <ScrollView contentContainerStyle={{ flex: 1, flexGrow: 1, paddingVertical: 50 }}>
       <View style={styles.container}>
         <RNText className="text-red-100 bg-[green]">Result: {result}</RNText>
-        <AppButton onPress={() => { }} classNames="bg-[green]">
+        <AppButton onPress={() => { }} className="bg-[green]">
           AppButton
         </AppButton>
-        <Button2 onPress={() => { }} classNames="bg-[green]">
-          AppButton 2
-        </Button2>
         <Input.Input
           style={{ borderWidth: 5 }}
           className="border-red border-[green]"

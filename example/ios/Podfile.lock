@@ -1232,7 +1232,7 @@ PODS:
     - Yoga
   - react-native-safe-area-context (4.12.0):
     - React-Core
-  - react-native-veekit-mobile-ui (0.1.0):
+  - react-native-veekit-mobile-ui (0.1.1):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.01.01.00)
@@ -1865,7 +1865,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 475ea38712131abd7f7935c82a41364cea2fa01f
   react-native-document-picker: ccca729bfa32ac6f20db6c48dd8ad4ca29ea8795
   react-native-safe-area-context: 142fade490cbebbe428640b8cbdb09daf17e8191
-  react-native-veekit-mobile-ui: f5211c7c133a87da3d06ade6e4d66239c3b1ebd6
+  react-native-veekit-mobile-ui: 955b1e57093f412e6736bd82b3f4806ed5e56850
   React-nativeconfig: 8c83d992b9cc7d75b5abe262069eaeea4349f794
   React-NativeModulesApple: b8465afc883f5bf3fe8bac3767e394d581a5f123
   React-perflogger: 59e1a3182dca2cee7b9f1f7aab204018d46d1914
