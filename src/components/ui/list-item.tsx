@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import tw from '../../lib/tailwind';
+// import colors from '../../theme/colors';
+// import tw from 'twrnc';
+
 interface ListItemProps {
     title: string;
     subtitle?: string;
@@ -23,16 +26,23 @@ const ListItem: React.FC<ListItemProps> = ({
     onPress,
     leadingIcon,
     trailingIcon,
-    variant = 'default',
+    // variant = 'default',
     order = 'default',
 }) => {
     return (
         <Pressable onPress={onPress} style={tw`flex-row items-center justify-between py-2 px-3   ${separator ? 'border-b border-gray-300 ' : 'border-b-0'}`}>
+            {!!leadingIcon && <View style={tw`mr-5`}>{leadingIcon}</View>}
             <View style={tw`flex-1 ${order === 'reverse' ? 'flex-col-reverse' : ''}`}>
                 <Text style={tw`text-md-title font-bold text-gray-800`}>{title}</Text>
                 {!!subtitle && <Text style={tw`text-xs-body text-gray-500`}>{subtitle}</Text>}
                 {!!extra && <Text style={tw`text-md-title font-bold text-gray-800`}>{extra}</Text>}
             </View>
+            {!!trailingIcon && (
+                <View
+                    className={`ml-lg justify-center self-center items-center`}>
+                    {trailingIcon}
+                </View>
+            )}
             {subTrigger && (
                 <View
                     style={tw`ml-sm justify-center self-center items-center`}>
