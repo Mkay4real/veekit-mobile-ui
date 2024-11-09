@@ -11493,6 +11493,7 @@ __metadata:
     react-native-svg: ^15.8.0
     release-it: ^15.0.0
     tailwind-merge: ^2.5.4
+    tailwind-variants: ^0.3.0
     tailwindcss: ^3.4.14
     tailwindcss-animate: ^1.0.7
     turbo: ^1.10.7
@@ -12952,6 +12953,17 @@ __metadata:
   version: 2.5.4
   resolution: "tailwind-merge@npm:2.5.4"
   checksum: c22adafebd23fc3c7f0ad25935791c10816d4a46460f000ebca4de8d8d22f7652a3746a3d9146599a4648aa92ab390340f6ded04b9152afd2b75fd96929399db
+  languageName: node
+  linkType: hard
+
+"tailwind-variants@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "tailwind-variants@npm:0.3.0"
+  dependencies:
+    tailwind-merge: ^2.5.4
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: 43ecf4fc2e9deb3617794babfea6378aef927a764a39270cf61eabe2e65370b255aba88c78cffd96cf4234f3855ac1bc52bcef39ee5605f19224fa9d2147c0a3
   languageName: node
   linkType: hard
 

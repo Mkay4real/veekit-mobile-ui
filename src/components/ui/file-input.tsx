@@ -47,10 +47,10 @@ const FileInput: React.FC<FileInputProps> = ({
   };
 
   return (
-    <View style={tw`w-full space-y-2`}>
+    <View style={tw`w-full gap-2`}>
       <View style={tw`border-2 border-dashed border-gray-200 self-center max-w-[80%] rounded-lg p-6`}>
         {!selectedFile ? (
-          <View style={tw`items-center space-y-4`}>
+          <View style={tw`items-center gap-4`}>
               <CloudIcon />
            
             <TouchableOpacity
