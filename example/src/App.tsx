@@ -7,9 +7,9 @@ import {
   multiply,
   // AppButton,
   primitives,
-  ui, 
+  ui,
 } from 'react-native-veekit-mobile-ui';
-const { Button, Text: UIText, Input, KeyPad, Avatar, Tabs, ListItem, FileInput } = ui;
+const { Button, Text: AppText, Input, KeyPad, Avatar, Tabs, ListItem, FileInput } = ui;
 const { Slot } = primitives;
 export default function App() {
   const [result, setResult] = useState<number | undefined>();
@@ -22,7 +22,7 @@ export default function App() {
   const tabs = [
     {
       label: 'Same Bank',
-      content: <View style={{backgroundColor: 'red', padding: 40}} />,
+      content: <View style={{ backgroundColor: 'red', padding: 40 }} />,
     },
     {
       label: 'Other Banks',
@@ -41,12 +41,17 @@ export default function App() {
           style={{ borderWidth: 5 }}
           className="border-red border-[green]"
         />
-        <Button.Button variant="tonal">
-          <UIText.Text>Waw </UIText.Text>
-        </Button.Button>
-        <UIText.Text variant={'largeTitle'} className="bg-[purple]">
+        {/* <ButtonWithContext.ButtonWithContext>
+          <RNText>Great world</RNText>
+
+        </ButtonWithContext.ButtonWithContext> */}
+        {/* <Button variant="tonal">
+          <AppText>Waw </AppText>
+        </Button> */}
+        <AppText color='success' size={9} weight='regular' highContrast classNames="bg-[purple] text-red-100">
           Alaro custom
-        </UIText.Text>
+        </AppText>
+
 
         <Slot.Pressable
           onPress={() => {
@@ -59,7 +64,15 @@ export default function App() {
           {/* <Pressable /> */}
         </Slot.Pressable>
         {/* <KeyPad type="decimal" /> */}
-        <Avatar color="warning" initials="PP" size={5} />
+        <Avatar color="warning" initials="PP" size={2} />
+        <View style={{ padding: 40, gap: 5 }}>
+
+          <Button text='My Button SM ' size={'sm'} variant='solid' />
+          <Button text='My Button MD ' size={'md'} variant='solid' />
+          <Button text='My Button MD ' size={'lg'} variant='solid' />
+          <Button text='My Button XL ' size={'xl'} variant='solid' />
+          <Button text='My Button XL ' size={'2xl'} variant='solid' state='default' onPress={() => { console.log("issssok") }} />
+        </View>
         <Tabs tabs={tabs} />
 
         <ListItem
