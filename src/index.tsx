@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { NativeModules, Platform } from 'react-native';
 
 const LINKING_ERROR =
@@ -20,4 +21,5 @@ const VeekitMobileUi = NativeModules.VeekitMobileUi
 export function multiply(a: number, b: number): Promise<number> {
   return VeekitMobileUi.multiply(a, b);
 }
+
 export * from './components'
