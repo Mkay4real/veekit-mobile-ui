@@ -104,7 +104,7 @@ const Avatar: React.FC<AvatarProps> = ({
     : avatarColors[color][variant];
   const textSizeStyle = textSizes[size];
 
-//   const iconSize = iconSizes[size];
+  //   const iconSize = iconSizes[size];
 
   const renderAvatar = () => {
     switch (fallBack) {
@@ -158,7 +158,7 @@ const Avatar: React.FC<AvatarProps> = ({
 
 export default Avatar;
 
-export type AvatarSize = 1 | 2 | 3 | 4 | 5 ;
+export type AvatarSize = 1 | 2 | 3 | 4 | 5;
 export type AvatarVariant = 'solid' | 'soft';
 export type AvatarColor =
   | 'accent'

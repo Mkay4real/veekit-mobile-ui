@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React from 'react';
 import {
   ActivityIndicator,
   type GestureResponderEvent,
@@ -57,16 +57,24 @@ const Button: React.FC<ButtonProps> = ({
         '2xl': 'h-4xl rounded-xs-max rounded-[8px] h-[60px] px-2xl px-[28px]',
       },
       variant: {
-        solid: highContrast ? 'bg-light-background-accent-bold dark:bg-dark-background-accent-bold' : 'bg-light-background-accent-base dark:bg-dark-background-accent-base',
-        soft: highContrast ? 'bg-light-background-accent-light dark:bg-dark-background-accent-light' : 'bg-light-background-accent-light dark:bg-dark-background-accent-light',
-        surface: highContrast ? 'bg-light-background-accent-light border border-light-edge-accent dark:border-dark-edge-accent' : 'bg-light-background-accent-light border border-light-edge-accent',
+        solid: highContrast
+          ? 'bg-light-background-accent-bold dark:bg-dark-background-accent-bold'
+          : 'bg-light-background-accent-base dark:bg-dark-background-accent-base',
+        soft: highContrast
+          ? 'bg-light-background-accent-light dark:bg-dark-background-accent-light'
+          : 'bg-light-background-accent-light dark:bg-dark-background-accent-light',
+        surface: highContrast
+          ? 'bg-light-background-accent-light border border-light-edge-accent dark:border-dark-edge-accent'
+          : 'bg-light-background-accent-light border border-light-edge-accent',
         outline: 'bg-transparent border border-light-edge-accent',
         ghost: 'bg-transparent',
       },
       state: {
         default: '',
-        active: 'bg-light-background-accent-base-pressed dark:bg-dark-background-accent-base-pressed',
-        disabled: 'bg-light-background-disable2 dark:bg-dark-background-disable2',
+        active:
+          'bg-light-background-accent-base-pressed dark:bg-dark-background-accent-base-pressed',
+        disabled:
+          'bg-light-background-disable2 dark:bg-dark-background-disable2',
       },
       color: {
         default: '',
@@ -79,17 +87,20 @@ const Button: React.FC<ButtonProps> = ({
       {
         state: 'disabled',
         variant: 'solid',
-        className: 'bg-light-background-disable2 dark:bg-dark-background-disable2',
+        className:
+          'bg-light-background-disable2 dark:bg-dark-background-disable2',
       },
       {
         state: 'disabled',
         variant: 'soft',
-        className: 'bg-light-background-disable2 dark:bg-dark-background-disable2',
+        className:
+          'bg-light-background-disable2 dark:bg-dark-background-disable2',
       },
       {
         state: 'disabled',
         variant: 'surface',
-        className: 'bg-light-background-disable2 border border-light-edge-disable dark:border-dark-edge-disable',
+        className:
+          'bg-light-background-disable2 border border-light-edge-disable dark:border-dark-edge-disable',
       },
     ],
   });
@@ -107,13 +118,13 @@ const Button: React.FC<ButtonProps> = ({
       state: {
         default: 'text-white',
         active: 'opacity-70',
-        disabled: 'text-light-type-gray-disabled dark:text-dark-type-gray-disabled',
+        disabled:
+          'text-light-type-gray-disabled dark:text-dark-type-gray-disabled',
       },
     },
   });
 
   // console.log("actualvalue",buttonStyles({ size, variant, state, color }));
-  
 
   return (
     <TouchableOpacity
@@ -133,7 +144,11 @@ const Button: React.FC<ButtonProps> = ({
           </View>
         )}
         {isLoading ? (
-          <ActivityIndicator animating size="small" color={textStyles({ size, state })} />
+          <ActivityIndicator
+            animating
+            size="small"
+            color={textStyles({ size, state })}
+          />
         ) : (
           <Text style={tw`${textStyles({ size, state })} ${textClassName}`}>
             {text}
@@ -141,7 +156,7 @@ const Button: React.FC<ButtonProps> = ({
         )}
         {iconEnd && (
           <View className="ml-2" style={tw`ml-2`}>
-             {/* TODO: Implemet the Icon Component */}
+            {/* TODO: Implemet the Icon Component */}
           </View>
         )}
       </View>

@@ -1230,7 +1230,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-safe-area-context (4.12.0):
+  - react-native-safe-area-context (4.14.0):
     - React-Core
   - react-native-veekit-mobile-ui (0.1.1):
     - DoubleConversion
@@ -1522,6 +1522,8 @@ PODS:
     - React-Core
     - React-jsi
   - ReactTestApp-Resources (1.0.0-dev)
+  - RNCClipboard (1.15.0):
+    - React-Core
   - RNReanimated (3.16.1):
     - DoubleConversion
     - glog
@@ -1611,6 +1613,27 @@ PODS:
     - Yoga
   - RNSVG (15.8.0):
     - React-Core
+  - RNVectorIcons (10.2.0):
+    - DoubleConversion
+    - glog
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
 
@@ -1682,8 +1705,10 @@ DEPENDENCIES:
   - "ReactNativeHost (from `../node_modules/@rnx-kit/react-native-host`)"
   - ReactTestApp-DevSupport (from `../node_modules/react-native-test-app`)
   - ReactTestApp-Resources (from `..`)
+  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1821,10 +1846,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-test-app"
   ReactTestApp-Resources:
     :path: ".."
+  RNCClipboard:
+    :path: "../node_modules/@react-native-clipboard/clipboard"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1864,8 +1893,8 @@ SPEC CHECKSUMS:
   React-Mapbuffer: b982d5bba94a8bc073bda48f0d27c9b28417fae3
   React-microtasksnativemodule: 475ea38712131abd7f7935c82a41364cea2fa01f
   react-native-document-picker: ccca729bfa32ac6f20db6c48dd8ad4ca29ea8795
-  react-native-safe-area-context: 142fade490cbebbe428640b8cbdb09daf17e8191
-  react-native-veekit-mobile-ui: 955b1e57093f412e6736bd82b3f4806ed5e56850
+  react-native-safe-area-context: 4532f1a0c5d34a46b9324ccaaedcb5582a302b7d
+  react-native-veekit-mobile-ui: 55c45cf9a7c437374f8bc4e07884f12a040dfe52
   React-nativeconfig: 8c83d992b9cc7d75b5abe262069eaeea4349f794
   React-NativeModulesApple: b8465afc883f5bf3fe8bac3767e394d581a5f123
   React-perflogger: 59e1a3182dca2cee7b9f1f7aab204018d46d1914
@@ -1894,8 +1923,10 @@ SPEC CHECKSUMS:
   ReactNativeHost: 99c0ffb175cd69de2ac9a70892cd22dac65ea79d
   ReactTestApp-DevSupport: 1e39530b4a8602e7138a5b9dfafe41d3a78382ff
   ReactTestApp-Resources: 7db90c026cccdf40cfa495705ad436ccc4d64154
+  RNCClipboard: 69ab8e51324d5b351f6ba72bbdb72478087a2c64
   RNReanimated: b4827a1095e76bb13e1db810f321012466202971
   RNSVG: 8b1a777d54096b8c2a0fd38fc9d5a454332bbb4d
+  RNVectorIcons: 0cbcb1c0cb6da1ca1d43d3d990255e584bb99028
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 055f92ad73f8c8600a93f0e25ac0b2344c3b07e6
 

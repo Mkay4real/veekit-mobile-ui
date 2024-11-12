@@ -15,7 +15,9 @@ const Tab: React.FC<TabProps> = ({ tabs }) => {
 
   return (
     <View style={tw`flex-1`}>
-      <View style={tw`flex-row w-full px-2 pt-3 border-gray-200 border rounded-lg`}>
+      <View
+        style={tw`flex-row w-full px-2 pt-3 border-gray-200 border rounded-lg`}
+      >
         {tabs.map((tab, index) => (
           <TouchableOpacity
             key={index}
@@ -26,7 +28,11 @@ const Tab: React.FC<TabProps> = ({ tabs }) => {
             }`}
             onPress={() => handleTabPress(index)}
           >
-            <Text style={tw`${activeTab === index? 'text-gray-900':'text-gray-400'}`} >{tab.label}</Text>
+            <Text
+              style={tw`${activeTab === index ? 'text-gray-900' : 'text-gray-400'}`}
+            >
+              {tab.label}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>

@@ -52,7 +52,7 @@ const KeyPad: React.FC<KeyPadProps> = ({
       onDone?.(value);
     }
     onChange?.(value);
-  }, [value]);
+  }, [value, onDone, onChange, textLength]);
 
   const handleKeyPress = (key: string) => {
     onKeyPress?.(key);

@@ -1,13 +1,13 @@
-import { memo, useMemo, type ReactNode } from 'react'
+import { memo, useMemo, type ReactNode } from 'react';
 import {
   Text as RNText,
   // type NativeSyntheticEvent,
   type TextProps,
-} from 'react-native'
-import { tv } from 'tailwind-variants'
-import type colors from '../../theme/colors'
+} from 'react-native';
+import { tv } from 'tailwind-variants';
+import type colors from '../../theme/colors';
 // import tw from 'twrnc'
-import tw from '../../lib/tailwind'
+import tw from '../../lib/tailwind';
 
 const textVariants = tv({
   base: 'text-left',
@@ -104,7 +104,8 @@ const textVariants = tv({
     {
       color: 'warning',
       highContrast: true,
-      className: 'text-light-type-warning-bold dark:text-dark-type-warning-bold',
+      className:
+        'text-light-type-warning-bold dark:text-dark-type-warning-bold',
     },
   ],
   defaultVariants: {
@@ -114,7 +115,7 @@ const textVariants = tv({
     highContrast: false,
     align: 'left',
   },
-})
+});
 
 const Text = ({
   size = 3,
@@ -129,31 +130,32 @@ const Text = ({
 }: ITextProps) => {
   const variantClasses = useMemo(
     () => textVariants({ size, weight, align, color, highContrast }),
-    [size, weight, align, color, highContrast],
-  )
+    [size, weight, align, color, highContrast]
+  );
 
   return (
     <RNText
       //  className={`${variantClasses} ${className || ''}`}
       style={tw`${variantClasses} h-md ${className || ''}`}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </RNText>
-  )
-}
+  );
+};
 
-export default memo(Text)
+export default memo(Text);
 
-type TailwindColorKey = keyof typeof colors.light.type
+type TailwindColorKey = keyof typeof colors.light.type;
 
 interface TextOwnProps {
-  size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-  color?: `${TailwindColorKey}`
-  trim?: 'normal' | 'start' | 'end' | 'both'
-  weight?: 'regular' | 'medium' | 'semibold' | 'bold'
-  highContrast?: boolean
-  align?: 'left' | 'center' | 'right'
-  className?: string
-  children?: string | ReactNode
+  size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  color?: `${TailwindColorKey}`;
+  trim?: 'normal' | 'start' | 'end' | 'both';
+  weight?: 'regular' | 'medium' | 'semibold' | 'bold';
+  highContrast?: boolean;
+  align?: 'left' | 'center' | 'right';
+  className?: string;
+  children?: string | ReactNode;
 }
-export type ITextProps = TextOwnProps & Omit<TextProps, keyof TextOwnProps>
+export type ITextProps = TextOwnProps & Omit<TextProps, keyof TextOwnProps>;

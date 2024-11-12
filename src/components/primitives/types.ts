@@ -26,10 +26,16 @@ interface Insets {
   left?: number;
   right?: number;
 }
-//@ts-ignore 
+//@ts-ignore
+
+/*
 type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>;
 //@ts-ignore 
 type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
+*/
+
+type PointerDownOutsideEvent = PointerEvent;
+type FocusOutsideEvent = FocusEvent;
 
 /**
  * Certain props are only available on the native version of the component.
