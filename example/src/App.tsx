@@ -1,3 +1,4 @@
+import "../global.css"
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { multiply } from 'react-native-veekit-mobile-ui';
@@ -11,7 +12,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text className="text-red-100 bg-[green]">Result: {result}</Text>
     </View>
   );
 }

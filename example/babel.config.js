@@ -6,7 +6,10 @@ const root = path.resolve(__dirname, '..');
 
 module.exports = getConfig(
   {
-    presets: ['module:@react-native/babel-preset'],
+    presets: ['module:@react-native/babel-preset', 'nativewind/babel'],
+
+    plugins: [
+      ['@babel/plugin-proposal-export-namespace-from'], ['react-native-reanimated/plugin']],
   },
   { root, pkg }
 );
