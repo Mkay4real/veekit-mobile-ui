@@ -11,9 +11,16 @@ import {
 } from 'react-native';
 import {
   AppButton,
+  Avatar,
+  Button,
+  FileInput,
+  ListItem,
   // AppButton,
   primitives,
-  ui,
+  Tabs,
+  Text as AppText,
+  KeyPad,
+  // ui,
 } from 'react-native-veekit-mobile-ui';
 
 import {
@@ -26,16 +33,16 @@ import {
   type PinInputModalRef,
 } from 'react-native-veekit-mobile-ui';
 
-const {
-  Button,
-  Text: AppText,
-  // Input: IInput,
-  // KeyPad,
-  Avatar,
-  Tabs,
-  ListItem,
-  FileInput,
-} = ui;
+// const {
+//   Button,
+//   Text: AppText,
+//   // Input: IInput,
+//   // KeyPad,
+//   Avatar,
+//   Tabs,
+//   ListItem,
+//   FileInput,
+// } = ui;
 const { Slot } = primitives;
 
 export default function App() {
@@ -117,6 +124,7 @@ export default function App() {
             {/* <Pressable /> */}
           </Slot.Pressable>
           {/* <KeyPad type="decimal" /> */}
+          <KeyPad />
           <Avatar color="warning" initials="PP" size={2} />
           <View style={{padding: 40, gap: 5}}>
 
