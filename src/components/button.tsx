@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Pressable,
   StyleSheet,
@@ -6,11 +6,12 @@ import {
   type GestureResponderEvent,
   type ViewStyle,
   type TextStyle,
-} from "react-native";
-
-interface Props extends React.PropsWithChildren{
+} from 'react-native';
+import { cn } from '../lib/utils';
+interface Props extends React.PropsWithChildren {
   disabled?: boolean;
   color?: string;
+  className?: string;
   buttonStyles?: ViewStyle;
   textStyles?: TextStyle;
   accessibilityLabel?: string;
@@ -23,21 +24,25 @@ const AppButton: React.FC<Props> = (props) => {
       style={({ pressed }) => [
         {
           backgroundColor: props.disabled
-            ? "#ccc"
+            ? '#ccc'
             : pressed
-            ? "#aa0000"
-            : props.color || "red",
+              ? '#aa0000'
+              : props.color || 'red',
         },
         styles.container,
         props.buttonStyles,
       ]}
+      className={cn(
+        'text-muted-foreground p-[10] bg-[yellow]',
+        props.className
+      )}
       disabled={props.disabled}
       onPress={props.onPress}
       accessible
-      accessibilityLabel={props.accessibilityLabel || "A Button"}
+      accessibilityLabel={props.accessibilityLabel || 'A Button'}
     >
       <Text style={[styles.text, props.textStyles]}>
-        {props.children || "Press Me"}
+        {props.children || 'Press Me'}
       </Text>
     </Pressable>
   );
@@ -46,10 +51,10 @@ const AppButton: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   container: {
     padding: 8,
-    alignItems: "center",
+    alignItems: 'center',
     borderRadius: 8,
   },
-  text: { color: "white" },
+  text: { color: 'white' },
 });
 
 export default AppButton;

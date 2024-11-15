@@ -1,11 +1,13 @@
 {
+  // "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
       "react-native-veekit-mobile-ui": ["./src/index"]
     },
+    "allowJs": true,
     "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+    "allowUnusedLabels": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
@@ -27,10 +29,19 @@
     "verbatimModuleSyntax": true
   },
   "include": [
+    "src/**/*.tsx", 
+    "src/**/*.ts",
+    "app.d.ts", 
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "nativewind-env.d.ts"
-  ]
+    "app.d.ts",
+    "nativewind-env.d.ts",
+    "expo-env.d.ts", 
+    "src/lib/tailwind.js",
+  ],
+  // "exclude": [
+  //   "src/storybook/**/*.tsx"
+  //   ],
+
 }

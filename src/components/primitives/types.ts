@@ -26,8 +26,9 @@ interface Insets {
   left?: number;
   right?: number;
 }
-
+//@ts-ignore 
 type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>;
+//@ts-ignore 
 type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
 
 /**
