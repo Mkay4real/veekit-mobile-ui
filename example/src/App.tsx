@@ -4,8 +4,7 @@
 //import "../global.css"
 import { useState, useEffect, type ReactNode, useRef } from 'react';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import { multiply, Icon, Input, SearchInput, CodeInput } from 'react-native-veekit-mobile-ui';
-import   {PinInputModal, type PinInputModalRef } from '../../src/components/pinInputModal';
+import { multiply, Icon, Input, SearchInput, CodeInput, PinInputModal, type PinInputModalRef } from 'react-native-veekit-mobile-ui';
 
 export default function App() {
   const [result, setResult] = useState<number | undefined>();
