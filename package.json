@@ -1,10 +1,10 @@
 {
   "name": "react-native-veekit-mobile-ui",
-  "version": "0.1.0",
+  "version": "0.1.8",
   "description": "Reusable Veekit Mobile UI",
-  "source": "./src/index.tsx",
-  "main": "./lib/commonjs/index.js",
-  "module": "./lib/module/index.js",
+  "source": "src/index.tsx",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
   "exports": {
     ".": {
       "import": {
@@ -34,7 +34,9 @@
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
-    "!**/.*"
+    "!**/.*",
+    "tailwind.config.js",
+    "global.css"
   ],
   "scripts": {
     "example": "yarn workspace react-native-veekit-mobile-ui-example",
@@ -63,16 +65,27 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
+    "@react-native-clipboard/clipboard": "^1.14.3",
+    "clsx": "^2.1.1",
+    "react-native-modal": "^13.0.1",
+    "react-native-safe-area-context": "^4.14.0",
+    "react-native-vector-icons": "^10.2.0",
+    "tailwind-merge": "^2.5.4",
+    "tailwind-variants": "^0.3.0",
+    "twrnc": "^4.6.0"
+  },
   "devDependencies": {
+    "@babel/eslint-plugin": "^7.25.9",
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.5.0",
-    "@radix-ui/colors": "^3.0.0",
     "@react-native/eslint-config": "^0.73.1",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.44",
+    "@types/react-native-vector-icons": "^6.4.18",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
     "commitlint": "^17.0.2",
     "del-cli": "^5.1.0",
     "eslint": "^8.51.0",
@@ -88,11 +101,9 @@
     "react-native-reanimated": "^3.16.1",
     "react-native-svg": "^15.8.0",
     "release-it": "^15.0.0",
-    "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.7",
     "turbo": "^1.10.7",
-    "twrnc": "^4.6.0",
     "typescript": "^5.2.2"
   },
   "resolutions": {
@@ -141,7 +152,11 @@
       "@react-native",
       "prettier"
     ],
+    "plugins": [
+      "@babel"
+    ],
     "rules": {
+      "@babel/no-invalid-this": "off",
       "react/react-in-jsx-scope": "off",
       "prettier/prettier": [
         "error",
@@ -158,7 +173,8 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "*.js"
   ],
   "prettier": {
     "quoteProps": "consistent",

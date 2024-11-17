@@ -9,7 +9,7 @@ module.exports = getConfig(
     presets: ['module:@react-native/babel-preset', 'nativewind/babel'],
 
     plugins: [
-      ['@babel/plugin-proposal-export-namespace-from'], ['react-native-reanimated/plugin']],
+      '@babel/plugin-proposal-export-namespace-from', 'react-native-reanimated/plugin'],
   },
   { root, pkg }
 );
