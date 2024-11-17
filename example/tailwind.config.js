@@ -6,7 +6,9 @@ module.exports = {
   content: ['./src/**/*.{ts,tsx}', './src/App.{ts,tsx}', './components/**/*.{ts,tsx}',
   '../src/components/**/*.{js,jsx,ts,tsx}', 'react-native-veekit-mobile-ui/*.{js,jsx,ts,tsx}'],
   // presets: [require('nativewind/preset'), require('react-native-veekit-mobile-ui/tailwind.config')],
-  presets: [require('nativewind/preset'), require('../tailwind.config')],
+  presets: [require('nativewind/preset'),
+    //  require('../tailwind.config')
+    ],
   theme: {
     extend: {
       colors: {

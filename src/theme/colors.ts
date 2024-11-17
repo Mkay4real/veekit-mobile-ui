@@ -363,7 +363,7 @@ const createTextColorScheme = ({
   grayDef?: string;
 }): { inverse: string; DEFAULT: string } =>
   createColorStateText({
-    primary: grayDef || alpha[`${string}A11`] as string, 
+    primary: grayDef || (alpha[`${string}A11`] as string),
     muted: color[`${string}11`],
     placeholder: alpha[`${string}A9`],
     disabled: alpha[`${string}A8`],
@@ -541,27 +541,27 @@ const createBgColorScheme = (
   transparent: createColorState(
     'rgba(252,252,253,0)',
     alphaColorVariant[`${string}A3`] as string,
-    alphaColorVariant[`${string}A4`] as string,
+    alphaColorVariant[`${string}A4`] as string
   ),
   base: createColorState(
     colorVariant[`${string}9`] as string,
-    colorVariant[`${string}10`]as string,
-    colorVariant[`${string}10`]as string,
+    colorVariant[`${string}10`] as string,
+    colorVariant[`${string}10`] as string
   ),
   light: createColorState(
     alphaColorVariant[`${string}A3`] as string,
     alphaColorVariant[`${string}A4`] as string,
-    alphaColorVariant[`${string}A5`] as string,
+    alphaColorVariant[`${string}A5`] as string
   ),
   lighter: createColorState(
     alphaColorVariant[`${string}A2`] as string,
     alphaColorVariant[`${string}A3`] as string,
-    alphaColorVariant[`${string}A4`] as string,
+    alphaColorVariant[`${string}A4`] as string
   ),
   bold: createColorState(
     colorVariant[`${string}12`] as string,
     colorVariant[`${string}12`] as string,
-    colorVariant[`${string}12`] as string,
+    colorVariant[`${string}12`] as string
   ),
 });
 

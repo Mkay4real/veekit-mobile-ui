@@ -1,9 +1,9 @@
-import React from 'react'
-import { useColorScheme } from 'nativewind'
-import { Image, Text, View } from 'react-native'
-import getInitials from '../../lib/initials'
-import { cn } from '../../lib/utils'
-import tw from '../../lib/tailwind'
+import React from 'react';
+import { useColorScheme } from 'nativewind';
+import { Image, Text, View } from 'react-native';
+import getInitials from '../../lib/initials';
+import { cn } from '../../lib/utils';
+import tw from '../../lib/tailwind';
 
 export interface AvatarProps {
   /**
@@ -11,68 +11,68 @@ export interface AvatarProps {
    * Determines the dimensions and text size of the avatar.
    * Default is 4.
    */
-  size?: AvatarSize
+  size?: AvatarSize;
 
   /**
    * The visual style of the avatar.
    * Options are 'solid' or 'soft'. Default is 'solid'.
    */
-  variant?: AvatarVariant
+  variant?: AvatarVariant;
 
   /**
    * The color scheme of the avatar.
    * Options include 'accent', 'neutral', 'success', 'error', 'warning', 'info'.
    * Default is 'neutral'.
    */
-  color?: AvatarColor
+  color?: AvatarColor;
 
   /**
    * Flag indicating if the avatar should use high contrast colors.
    * Default is false.
    */
-  highContrast?: boolean
+  highContrast?: boolean;
 
   /**
    * The fallback method for displaying the avatar.
    * Options are 'image', 'initials', or 'icon'. Default is 'initials'.
    */
-  fallBack?: AvatarFallback
+  fallBack?: AvatarFallback;
 
   /**
    * Optional status indicator for the avatar (e.g., online/offline).
    * Not currently implemented in the component.
    */
-  status?: boolean
+  status?: boolean;
 
   /**
    * The initials to display if using the initials fallback.
    * Default is an empty string.
    */
-  initials?: string
+  initials?: string;
 
   /**
    * The URL of the image to display if using the image fallback.
    * Default is an empty string.
    */
-  imageUrl?: string
+  imageUrl?: string;
 
   /**
    * Optional custom icon to display if using the icon fallback.
    * Default is the user icon.
    */
-  icon?: React.ReactNode
+  icon?: React.ReactNode;
 
   /**
    * The number of initials to display if using the initials fallback.
    * Options are 1 or 2. Default is 1.
    */
-  numberOfInitials?: NumberOfInitials
+  numberOfInitials?: NumberOfInitials;
 
   /**
    * Accessibility label for the avatar.
    * Default is an empty string.
    */
-  accessibilityLabel?: string
+  accessibilityLabel?: string;
 }
 
 /**
@@ -81,9 +81,9 @@ export interface AvatarProps {
  * It supports multiple sizes, variants, colors, and fallback options.
  */
 const Avatar: React.FC<AvatarProps> = ({
-  size = 4,
+  size = 1,
   variant = 'solid',
-  color = 'neutral',
+  color = 'info',
   highContrast = false,
   fallBack = 'initials',
   initials = '',
@@ -91,19 +91,20 @@ const Avatar: React.FC<AvatarProps> = ({
   numberOfInitials = 1,
   accessibilityLabel = '',
 }) => {
-  const { colorScheme } = useColorScheme()
-  const isDarkMode = colorScheme === 'dark'
+  const { colorScheme } = useColorScheme();
+  //@ts-ignore ignore unused for now
+  const isDarkMode = colorScheme === 'dark';
 
-  const avatarSizeStyle = sizeStyles[size]
+  const avatarSizeStyle = sizeStyles[size];
   const textColor = highContrast
     ? highContrastTextColors[color][variant]
-    : textColors[color][variant]
+    : textColors[color][variant];
   const avatarColor = highContrast
     ? highContrastAvatarColors[color][variant]
-    : avatarColors[color][variant]
-  const textSizeStyle = textSizes[size]
+    : avatarColors[color][variant];
+  const textSizeStyle = textSizes[size];
 
-  const iconSize = iconSizes[size]
+  //   const iconSize = iconSizes[size];
 
   const renderAvatar = () => {
     switch (fallBack) {
@@ -112,7 +113,8 @@ const Avatar: React.FC<AvatarProps> = ({
           <View
             style={tw`${avatarSizeStyle} flex items-center justify-center`}
             accessibilityLabel={accessibilityLabel}
-            accessibilityRole="image">
+            accessibilityRole="image"
+          >
             <Image
               source={{ uri: imageUrl }}
               style={tw`${avatarSizeStyle}`}
@@ -120,72 +122,74 @@ const Avatar: React.FC<AvatarProps> = ({
               accessible={false}
             />
           </View>
-        ) : null
+        ) : null;
       case 'initials':
         return (
           <View
             style={tw`${cn(avatarSizeStyle, avatarColor)} flex items-center justify-center`}
             accessibilityLabel={accessibilityLabel}
-            accessibilityRole="text">
+            accessibilityRole="text"
+          >
             <Text style={tw`${cn(textSizeStyle, textColor)}`}>
               {getInitials(initials, numberOfInitials)}
             </Text>
           </View>
-        )
-    //   case 'icon':
-    //     return (
-    //       <View
-    //         className={`${classNames(avatarSizeStyle, avatarColor)} flex items-center justify-center`}
-    //         accessibilityLabel={accessibilityLabel}
-    //         accessibilityRole="image">
-    //         <Icon
-    //           name="user-6-line"
-    //           size={iconSize}
-    //           color={colors[isDarkMode ? 'dark' : 'light'].amber1}
-    //         />
-    //       </View>
-    //     )
+        );
+      //   case 'icon':
+      //     return (
+      //       <View
+      //         className={`${classNames(avatarSizeStyle, avatarColor)} flex items-center justify-center`}
+      //         accessibilityLabel={accessibilityLabel}
+      //         accessibilityRole="image">
+      //         <Icon
+      //           name="user-6-line"
+      //           size={iconSize}
+      //           color={colors[isDarkMode ? 'dark' : 'light'].amber1}
+      //         />
+      //       </View>
+      //     )
       default:
-        return null
+        return null;
     }
-  }
+  };
 
-  return <>{renderAvatar()}</>
-}
+  return <>{renderAvatar()}</>;
+};
 
-export default Avatar
+export default Avatar;
 
-
-export type AvatarSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-export type AvatarVariant = 'solid' | 'soft'
-export type AvatarColor = 'accent' | 'neutral' | 'success' | 'error' | 'warning' | 'info'
-export type AvatarFallback = 'image' | 'initials' | 'icon'
-export type NumberOfInitials = 1 | 2
+export type AvatarSize = 1 | 2 | 3 | 4 | 5;
+export type AvatarVariant = 'solid' | 'soft';
+export type AvatarColor =
+  | 'accent'
+  | 'neutral'
+  | 'success'
+  | 'error'
+  | 'warning'
+  | 'info';
+export type AvatarFallback = 'image' | 'initials' | 'icon';
+export type NumberOfInitials = 1 | 2;
 
 export interface AvatarProps {
-  size?: AvatarSize
-  variant?: AvatarVariant
-  color?: AvatarColor
-  highContrast?: boolean
-  fallBack?: AvatarFallback
-  status?: boolean
-  initials?: string
-  imageUrl?: string
-  icon?: React.ReactNode
-  numberOfInitials?: NumberOfInitials
+  size?: AvatarSize;
+  variant?: AvatarVariant;
+  color?: AvatarColor;
+  highContrast?: boolean;
+  fallBack?: AvatarFallback;
+  status?: boolean;
+  initials?: string;
+  imageUrl?: string;
+  icon?: React.ReactNode;
+  numberOfInitials?: NumberOfInitials;
 }
 
 export const sizeStyles: Record<AvatarSize, string> = {
-  1: 'w-xl h-xl rounded-full',
+  1: 'w-[45px] h-[45px] rounded-full',
   2: 'w-2xl h-2xl rounded-full',
   3: 'w-3xl h-3xl rounded-full',
   4: 'w-4xl h-4xl rounded-full',
   5: 'w-5xl h-5xl rounded-full',
-  6: 'w-[80px] h-[80px] rounded-full',
-  7: 'w-[96px] h-[96px] rounded-full',
-  8: 'w-[128px] h-[128px] rounded-full',
-  9: 'w-[160px] h-[160px] rounded-full',
-}
+};
 
 export const textSizes: Record<AvatarSize, string> = {
   1: 'text-xs-head font-medium leading-4',
@@ -193,11 +197,7 @@ export const textSizes: Record<AvatarSize, string> = {
   3: 'text-base-title font-medium leading-6',
   4: 'text-lg-title font-medium leading-[26px]',
   5: 'text-2xl-title font-medium leading-[30px]',
-  6: 'text-3xl font-medium leading-7',
-  7: 'text-3xl font-medium leading-9',
-  8: 'text-4xl font-medium leading-10',
-  9: 'text-5xl font-medium leading-10',
-}
+};
 
 export const iconSizes: Record<AvatarSize, number> = {
   1: 16,
@@ -205,23 +205,25 @@ export const iconSizes: Record<AvatarSize, number> = {
   3: 16,
   4: 18,
   5: 20,
-  6: 24,
-  7: 24,
-  8: 32,
-  9: 40,
-}
+};
 
-export const avatarColors: Record<AvatarColor, Record<AvatarVariant, string>> = {
+export const avatarColors: Record<
+  AvatarColor,
+  Record<AvatarVariant, string>
+> = {
   accent: {
-    solid: 'bg-light-background-accent-base dark:bg-dark-background-accent-base',
+    solid:
+      'bg-light-background-accent-base dark:bg-dark-background-accent-base',
     soft: 'bg-light-background-accent-lighter dark:bg-dark-background-accent-lighter',
   },
   neutral: {
-    solid: 'bg-light-background-neutral-base dark:bg-dark-background-neutral-base',
+    solid:
+      'bg-light-background-neutral-base dark:bg-dark-background-neutral-base',
     soft: 'bg-light-background-neutral-light dark:bg-dark-background-neutral-light',
   },
   success: {
-    solid: 'bg-light-background-success-base dark:bg-dark-background-success-base',
+    solid:
+      'bg-light-background-success-base dark:bg-dark-background-success-base',
     soft: 'bg-light-background-success-light dark:bg-dark-background-success-light',
   },
   error: {
@@ -229,14 +231,15 @@ export const avatarColors: Record<AvatarColor, Record<AvatarVariant, string>> = 
     soft: 'bg-light-background-error-light dark:bg-dark-background-error-light',
   },
   warning: {
-    solid: 'bg-light-background-warning-base dark:bg-dark-background-warning-base',
+    solid:
+      'bg-light-background-warning-base dark:bg-dark-background-warning-base',
     soft: 'bg-light-background-warning-light dark:bg-dark-background-warning-light',
   },
   info: {
     solid: 'bg-light-background-info-base dark:bg-dark-background-info-base',
     soft: 'bg-light-background-info-light dark:bg-dark-background-info-light',
   },
-}
+};
 
 export const textColors: Record<AvatarColor, Record<AvatarVariant, string>> = {
   accent: {
@@ -248,7 +251,8 @@ export const textColors: Record<AvatarColor, Record<AvatarVariant, string>> = {
     soft: 'text-light-type-gray-muted dark:text-dark-type-gray-muted',
   },
   success: {
-    solid: 'text-light-type-success-inverse dark:text-dark-type-success-inverse',
+    solid:
+      'text-light-type-success-inverse dark:text-dark-type-success-inverse',
     soft: 'text-light-type-success dark:text-dark-type-success',
   },
   error: {
@@ -263,19 +267,25 @@ export const textColors: Record<AvatarColor, Record<AvatarVariant, string>> = {
     solid: 'text-black',
     soft: 'text-light-type-info dark:text-dark-type-info',
   },
-}
+};
 
-export const highContrastAvatarColors: Record<AvatarColor, Record<AvatarVariant, string>> = {
+export const highContrastAvatarColors: Record<
+  AvatarColor,
+  Record<AvatarVariant, string>
+> = {
   accent: {
-    solid: 'bg-light-background-accent-bold dark:bg-dark-background-accent-bold',
+    solid:
+      'bg-light-background-accent-bold dark:bg-dark-background-accent-bold',
     soft: 'bg-light-background-accent-lighter dark:bg-dark-background-accent-lighter',
   },
   neutral: {
-    solid: 'bg-light-background-neutral-bold dark:bg-dark-background-neutral-bold',
+    solid:
+      'bg-light-background-neutral-bold dark:bg-dark-background-neutral-bold',
     soft: 'bg-light-background-neutral-light dark:bg-dark-background-neutral-light',
   },
   success: {
-    solid: 'bg-light-background-success-bold dark:bg-dark-background-success-bold',
+    solid:
+      'bg-light-background-success-bold dark:bg-dark-background-success-bold',
     soft: 'bg-light-background-success-light dark:bg-dark-background-success-light',
   },
   error: {
@@ -283,16 +293,20 @@ export const highContrastAvatarColors: Record<AvatarColor, Record<AvatarVariant,
     soft: 'bg-light-background-error-light dark:bg-dark-background-error-light',
   },
   warning: {
-    solid: 'bg-light-background-warning-bold dark:bg-dark-background-warning-bold',
+    solid:
+      'bg-light-background-warning-bold dark:bg-dark-background-warning-bold',
     soft: 'bg-light-background-warning-light dark:bg-dark-background-warning-light',
   },
   info: {
     solid: 'bg-light-background-info-bold dark:bg-dark-background-info-bold',
     soft: 'bg-light-background-info-light dark:bg-dark-background-info-light ',
   },
-}
+};
 
-export const highContrastTextColors: Record<AvatarColor, Record<AvatarVariant, string>> = {
+export const highContrastTextColors: Record<
+  AvatarColor,
+  Record<AvatarVariant, string>
+> = {
   accent: {
     solid: 'text-light-type-accent-inverse dark:text-dark-type-accent-inverse',
     soft: 'text-light-type-accent-bold dark:text-dark-type-accent-bold',
@@ -302,7 +316,8 @@ export const highContrastTextColors: Record<AvatarColor, Record<AvatarVariant, s
     soft: 'text-light-type-gray dark:text-dark-type-gray',
   },
   success: {
-    solid: 'text-light-type-success-inverse dark:text-dark-type-success-inverse',
+    solid:
+      'text-light-type-success-inverse dark:text-dark-type-success-inverse',
     soft: 'text-light-type-success-bold dark:text-dark-type-success-bold',
   },
   error: {
@@ -310,11 +325,12 @@ export const highContrastTextColors: Record<AvatarColor, Record<AvatarVariant, s
     soft: 'text-light-type-error-bold dark:text-dark-type-error-bold',
   },
   warning: {
-    solid: 'text-light-type-warning-inverse dark:text-dark-type-warning-inverse',
+    solid:
+      'text-light-type-warning-inverse dark:text-dark-type-warning-inverse',
     soft: 'text-light-type-warning-bold dark:text-dark-type-warning-bold ',
   },
   info: {
     solid: 'text-light-type-info-inverse dark:text-dark-type-info-inverse',
     soft: 'text-light-type-info-bold dark:text-dark-type-info-bold',
   },
-}
+};

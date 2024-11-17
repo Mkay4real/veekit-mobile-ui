@@ -39,6 +39,7 @@
     "nativewind-env.d.ts",
     "expo-env.d.ts", 
     "src/lib/tailwind.js",
+    "src/tailwind.config.js",
   ],
   // "exclude": [
   //   "src/storybook/**/*.tsx"

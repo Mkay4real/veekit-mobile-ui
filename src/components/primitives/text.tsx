@@ -1,10 +1,11 @@
 //TODO: For now revert back to relative path
 // import * as Slot from '~/components/primitives/slot';
+import { cn } from '../../lib/utils';
 import * as Slot from './slot';
 import type { SlottableTextProps, TextRef } from './types';
 import * as React from 'react';
 import { Text as RNText } from 'react-native';
-import { cn } from '../../lib/utils';
+//import { cn } from '../../lib/utils';
 
 const TextClassContext = React.createContext<string | undefined>(undefined);
 
