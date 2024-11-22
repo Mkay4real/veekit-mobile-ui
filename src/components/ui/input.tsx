@@ -30,6 +30,8 @@ import EyeOff from '../../images/svgs/EyeOff';
 //import Clipboard from '@react-native-clipboard/clipboard';
 import {FormInputContainer} from './form-input-container';
 import type {WlvaInput} from '../../types/WlvaInput';
+import { Animated } from 'react-native';
+import { Easing } from 'react-native';
 
 
 
@@ -76,7 +78,8 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
     errorLabel,
     noLabel,
     autofocus,
-    onKeyPress
+    onKeyPress,
+    noAnim0=false
   },
   ref,
 ) => {
@@ -87,6 +90,12 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
   const [secureTextVisible, setSecureTextVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [focused, setFocused] = useState(false);
+  const [filled, setFilled] = useState(false);
+
+  const focusBorder = new Animated.Value(0);
+  const errorBorder = new Animated.Value(0);
+  const errorAnim = new Animated.Value(0);
+  const inputAnim = !noAnim0 ? new Animated.Value(0) : new Animated.Value(1);
 
   const styles = useStyle();
 
@@ -127,6 +136,29 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
       return text;
     },
   }));
+
+
+  const triggerAnimation = () => {
+    Animated.timing(focusBorder, {
+        duration: 300,
+        toValue: focused ? 1 : 0,
+        easing: Easing.inOut(Easing.circle),
+        useNativeDriver: true,
+    }).start();
+
+    Animated.timing(errorBorder, {
+        duration: 200,
+        toValue: error ? 1 : 0,
+        useNativeDriver: true,
+    }).start();
+
+    Animated.timing(inputAnim, {
+        duration: 300,
+        toValue: filled || focused ? 1 : 0,
+        useNativeDriver: true,
+        easing: Easing.out(Easing.exp),
+    }).start();
+}
 
   /*
   const handlePasteNotification = async (txt:string) => {
@@ -173,6 +205,7 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
         onBlur();
       }
     }
+   // triggerAnimation()
   };
 
   const handleValidationCheck = () => {
@@ -488,7 +521,7 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
         focused={focused}
         style={contentWrapperStyle}
         error={error}
-        label={label}
+        label={text.length < 1 ? '' : label}
         >
         
           <TextInput

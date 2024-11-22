@@ -2,9 +2,10 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
-import {type StyleProp, StyleSheet, TouchableOpacity, View, type ViewStyle, Text} from 'react-native';
-import {type FC, type PropsWithChildren} from 'react';
+import {type StyleProp, StyleSheet, TouchableOpacity, View, type ViewStyle, Animated} from 'react-native';
+import {useState, type FC, type PropsWithChildren} from 'react';
 import tw from '../../lib/tailwind';
+import AppText from './text';
 type Props = {
   onFocus: () => void;
   editable?: boolean;
@@ -33,7 +34,58 @@ export const FormInputContainer: FC<PropsWithChildren<Props>> = ({
   containerStyle,
   style,
 }) => {
+  const [labelWidth] = useState(1)
+  const [labelScale] = useState(0.85)
 
+  const focusBorder = new Animated.Value(0);
+  const errorBorder = new Animated.Value(0);
+  const errorAnim = new Animated.Value(0);
+  const inputAnim =  new Animated.Value(0);
+
+  const renderLabel = () => {
+    const scaledLabel = labelWidth * labelScale;
+
+    let transform = [
+        {
+            translateY: inputAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, -20],
+            }),
+        },
+        {
+            translateX: inputAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, -1 * ((labelWidth - scaledLabel) / 2)],
+            }),
+        },
+        {
+            scale: inputAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [1, labelScale],
+            }),
+        },
+    ];
+
+    return (
+        <Animated.View style={[ { transform }]}>
+            <AppText
+                style={[
+                    tw`w-full pt-0`,   
+                ]}
+                // numberOfLines={1}
+            >
+                {label}
+                
+            </AppText>
+        </Animated.View>
+    );
+    /*return (
+      <View style={[tw`w-full`]}>
+        <Text>{label}</Text>
+      </View>
+    )
+      */
+  }
   
   return (
     <TouchableOpacity
@@ -50,11 +102,7 @@ export const FormInputContainer: FC<PropsWithChildren<Props>> = ({
       ]}
       disabled={!editable}
       onPress={onFocus}>
-      {label && (
-        <View style={[tw`w-full`]}>
-          <Text>{label}</Text>
-        </View>
-      )}
+      {label && renderLabel()}
       <View style={[tw`w-full h-11 flex-row items-center justify-between bg-white rounded-md`]}>
       {leading && (
         <View

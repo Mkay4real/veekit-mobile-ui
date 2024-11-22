@@ -48,6 +48,7 @@ export interface WlvaInput {
     numberOfLines?: number,
     errorLabel?: string,
     autofocus?: boolean,
-    onKeyPress?: (e:any) => void;
+    onKeyPress?: (e:any) => void,
+    noAnim0?: boolean;
   }
   

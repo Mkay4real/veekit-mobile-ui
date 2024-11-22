@@ -188,8 +188,7 @@ export default function App() {
         <Row>
           <View style={{width: '90%'}}>
             <Input
-              placeholder='Enter text here'
-              label='Text input'
+              placeholder='Email address'
               value={value1}
               onChangeText={(t) => { setValue1(t); }}
             />
@@ -199,9 +198,8 @@ export default function App() {
         <Row>
           <View style={{width: '90%'}}>
             <SearchInput
-              placeholder='Enter text here'
-              label='Search input'
-              value={value2}
+              placeholder='Bank name, account name or account number'
+             value={value2}
               onChange={setValue2}
             />
 
@@ -211,8 +209,7 @@ export default function App() {
         <Row>
           <View style={{width: '90%'}}>
             <Input
-              placeholder='Enter text here'
-              label='Password input'
+              placeholder='Password'
               secure={true}
               value={value3}
               onChange={setValue3}
