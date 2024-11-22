@@ -1,11 +1,11 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
-import {StyleSheet, View} from 'react-native';
+import { View} from 'react-native';
 import {type FC} from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {getSvgIcon} from '../common/utils';
+import {getSvgIcon} from '../../common/utils';
+import tw from '../../lib/tailwind';
 
 type props = {
 iconType: 'svg' | 'IonIcons' | 'MaterialCommunityIcons',
@@ -27,7 +27,7 @@ size
         if(icon && iconType === 'IonIcons') {
           return <IonIcons
             name={icon} 
-            style={styles.icon} 
+            style={[tw`self-center`]} 
             color={color}
             size={size ? size : 20}
           />;
@@ -35,7 +35,7 @@ size
         if(icon && iconType === 'MaterialCommunityIcons') {
             return <MaterialCommunityIcons
             name={icon} 
-            style={styles.icon} 
+            style={[tw`self-center`]} 
             color={color}
             size={size ? size : 20}
           />;
@@ -48,7 +48,7 @@ size
             }
             else{
               const SvgIcon = ret.value;
-              return <View style={{marginRight: 10}}>
+              return <View style={tw`mt-5 ml-2 items-center`}>
              <SvgIcon fill={color}/>
              </View>;
             }
@@ -62,17 +62,9 @@ size
       };
 
     return (
-        <View style={styles.container}>
+        <View>
            {renderIcon()}
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-
-    },
-    icon: {
-
-    }
-});

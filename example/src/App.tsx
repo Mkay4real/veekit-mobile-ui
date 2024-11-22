@@ -124,7 +124,7 @@ export default function App() {
             {/* <Pressable /> */}
           </Slot.Pressable>
           {/* <KeyPad type="decimal" /> */}
-          <KeyPad />
+          <KeyPad type='decimal'/>
           <Avatar color="warning" initials="PP" size={2} />
           <View style={{padding: 40, gap: 5}}>
 

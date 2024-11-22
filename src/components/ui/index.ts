@@ -5,3 +5,7 @@ export { type AvatarProps, default as Avatar } from './avatar';
 export { default as Tabs } from './tabs';
 export { default as ListItem } from './list-item';
 export { default as FileInput } from './file-input';
+export { PinInputModal, type PinInputModalRef } from './pin-input-modal';
+export { Icon } from './icon';
+export { ModalCard } from './modal-card';
+export { GenericModal } from './generic-modal';
