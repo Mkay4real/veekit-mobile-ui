@@ -1,30 +1,85 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
-import  {type FC, useEffect, useState} from 'react';
+import  {type FC, useEffect, useRef, useState} from 'react';
 import {
-   StyleSheet, View, Keyboard
+   StyleSheet, View, Keyboard,
+   type NativeSyntheticEvent,
+   type TextInputChangeEventData,
+   Platform
 } from 'react-native';
 import {Input} from './input';
 import tw from '../../lib/tailwind';
 
 
 type props = {
-  pinLength?: number;
+  length?: number;
   onContinue?: (pin?: string) => void;
+  autoFillText?: string;
 };
 
 
 export const CodeInput: FC<props> = ({
-  pinLength = 6,
+  length = 6,
   onContinue,
+  autoFillText='', 
 }) => {
-  const [pin, setPin] = useState('');
+  const inputLength = useRef(new Array(length).fill(''));
+  const [input, setInput] = useState<string[]>([]);
+  const inputRefs = useRef<any>([]);
+
+  type pressProps = {
+    e: any,//NativeSyntheticEvent<Key>,
+    index: number
+  }
+
+  const handleOnKeyPress = (props: pressProps) => {
+    const {e,index} = props
+    if (e?.nativeEvent?.key === 'Backspace') {
+      if (index > 0 && inputRefs.current.length) {
+        const newIndex = index;
+        (inputRefs.current[newIndex-1])?.focusInput()
+      }
+    }
+  }
+
+  const logKey = (value='', index=0) => {
+    const newIndex = index + 1;
+
+    if(Platform.OS === 'ios' && value.length === length){
+      let newInput = []
+      for(let i = 0; i < inputRefs.current.length; i++){
+        newInput[i] = value.charAt(i)
+      }
+      setInput(newInput)
+    }
+    else{
+      setInput(previousInput => {
+        const newInput = [...previousInput];
+        newInput[index] = value.charAt(0);
+        return newInput;
+      });
+    }
+   
+    if (newIndex < length && value.length > 0) {
+      (inputRefs.current[newIndex])?.focusInput();
+    }
+  };
 
   useEffect(() => {
-    if (pin.length === pinLength) {
-      onContinue && onContinue(pin);
+    if(autoFillText.length === length){
+     let temp = autoFillText.split('')
+     setInput(temp)
     }
-  }, [onContinue, pin, pinLength]);
+  },[autoFillText,length])
+
+  useEffect(() => {
+    if (input.join('').length === length) {
+      typeof onContinue === 'function' && onContinue(input.join(''));
+    }
+  }, [input, length]);
+
 
 
 
@@ -48,24 +103,35 @@ export const CodeInput: FC<props> = ({
   return (
     <View>
       <View style={styles.pinInputWrapper}>
-        {new Array(pinLength).fill('').map((_, index) => {
+        {new Array(length).fill('').map((_, index) => {
             
           return (
-            <View
-              key={index}
-              style={[
-                tw`w-10 h-10 rounded-md border mx-2.5 items-center justify-content-center`
-              ]}
-            >
+           
              <Input 
+             /*
+              
+            
+            selectionColor={Colors.primaryColor}
+            selectTextOnFocus
+            
+           
+            
+            
+             */
+             autofocus={index === 0}
+             maxLength={Platform.OS === 'android' ? 1 : 6}
+             key={index}
              style={[
-                styles.pinInput,
-                index < pin.length ? styles.pinInputFilled : null,
+               tw`w-10 h-10 rounded-md border mx-2.5 items-center justify-center`
              ]}
-             onChange={() => setPin(v => `${pin}${v}`)}
+             ref={ref => (inputRefs.current[index] = ref)}
+             value={input[index]}
+             autoComplete='sms-otp'
+             textContentType='oneTimeCode'
+             onKeyPress={e => handleOnKeyPress({e, index})}
+             onChangeText={t => logKey(t, index)}
              keyboardType='number-pad'
              />
-            </View>
           );
         })}
       </View>
@@ -76,15 +142,7 @@ export const CodeInput: FC<props> = ({
 
 const styles = StyleSheet.create({
 
-  key: {
-    width: 100,
-    height: 64,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FAFAFA',
-    marginHorizontal: 5
-  },
+
   hide: {
     opacity: 0,
   },

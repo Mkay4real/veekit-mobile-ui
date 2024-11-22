@@ -74,7 +74,9 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
     contentWrapperStyle,
     numberOfLines,
     errorLabel,
-    noLabel
+    noLabel,
+    autofocus,
+    onKeyPress
   },
   ref,
 ) => {
@@ -491,7 +493,7 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
         
           <TextInput
           ref={inputRef}
-         // contextMenuHidden={true}
+          autoFocus={autofocus}
           placeholder={placeholder}
           placeholderTextColor={placeholderTextColor ?? "#979797"}
           editable={editable}
@@ -524,6 +526,7 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
           secureTextEntry={isSecureEntry()}
           value={value}
           onChangeText={handleOnChangeText}
+          onKeyPress={onKeyPress}
         />
        
       </FormInputContainer>
