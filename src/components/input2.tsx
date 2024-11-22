@@ -28,7 +28,7 @@ import  {
   import Eye from '../images/svgs/Eye';
   import EyeOff from '../images/svgs/EyeOff';
   //import Clipboard from '@react-native-clipboard/clipboard';
-import {FormInputContainer} from './formInputContainer';
+import {FormInputContainer} from './ui/form-input-container';
 import type {WlvaInput} from '../types/WlvaInput';
   
   

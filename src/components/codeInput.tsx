@@ -4,7 +4,7 @@ import  {type FC, useEffect, useState} from 'react';
 import {
    StyleSheet, View, Keyboard
 } from 'react-native';
-import {Input} from './input';
+import {Input} from './input2';
 
 
 type props = {

@@ -9,3 +9,6 @@ export { PinInputModal, type PinInputModalRef } from './pin-input-modal';
 export { Icon } from './icon';
 export { ModalCard } from './modal-card';
 export { GenericModal } from './generic-modal';
+export { FormInputContainer } from './form-input-container';
+export { Input } from './input';
+export { SearchInput } from './search-input';

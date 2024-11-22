@@ -3,7 +3,7 @@
 import {TouchableOpacity, type StyleProp, type ViewStyle} from 'react-native';
 import {type FC, useRef} from 'react';
 import {Input} from './input';
-import Search from '../images/svgs/Search';
+import Search from '../../images/svgs/Search';
 
 type Props = {
   label?: string;
@@ -34,6 +34,7 @@ export const SearchInput: FC<Props> = ({
 
 
   return (
+    
     <Input 
       placeholder={placeholder} 
       label={label}
