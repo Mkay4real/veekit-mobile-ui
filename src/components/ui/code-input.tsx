@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 
 import  {type FC, useEffect, useRef, useState} from 'react';
 import {
-   StyleSheet, View, Keyboard,
+    View, Keyboard,
    type NativeSyntheticEvent,
    type TextInputChangeEventData,
    Platform
@@ -102,27 +102,17 @@ export const CodeInput: FC<props> = ({
   */
   return (
     <View>
-      <View style={styles.pinInputWrapper}>
+      <View style={[tw`mb-2.5 flex-row border-0 items-center justify-content-center`]}>
         {new Array(length).fill('').map((_, index) => {
             
           return (
            
              <Input 
-             /*
-              
-            
-            selectionColor={Colors.primaryColor}
-            selectTextOnFocus
-            
-           
-            
-            
-             */
              autofocus={index === 0}
              maxLength={Platform.OS === 'android' ? 1 : 6}
              key={index}
              style={[
-               tw`w-10 h-10 rounded-md border mx-2.5 items-center justify-center`
+               tw`w-10 h-10 rounded-md border-0 mx-2.5 items-center justify-center`
              ]}
              ref={ref => (inputRefs.current[index] = ref)}
              value={input[index]}
@@ -139,59 +129,4 @@ export const CodeInput: FC<props> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-
-
-  hide: {
-    opacity: 0,
-  },
-  backSpace: {
-    backgroundColor: 'transparent',
-  },
-  keyText: {
-    color: '#4F4F4F',
-    fontWeight: '500',
-    fontSize: 24,
-  },
-  button: {
-    width: 260,
-    alignSelf: 'center',
-    marginTop: 33,
-  },
-  buttonText: {
-    color: '#000000',
-  },
-  pinInputWrapper: {
-    marginBottom: 10,
-
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pinInputBox: {
-    width: 40,
-    height: 40,
-   // aspectRatio: 1,
-    borderRadius: 12,
-    borderWidth: 1,
-    marginHorizontal: 10,
-    borderColor: '#828282',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  pinInput: {
-    width: 30,
-    height: 30,
-    alignSelf: 'center',
-    borderRadius: 8,
-    //marginHorizontal: 10
-  },
-  pinInputFilled: {
-    backgroundColor: '#333333',
-  },
-  pinText: {
-    fontSize: 14
-  }
-});
 
