@@ -521,7 +521,7 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
         focused={focused}
         style={contentWrapperStyle}
         error={error}
-        label={text.length < 1 ? '' : label}
+        label={text.length < 1 ? '' : placeholder}
         >
         
           <TextInput
