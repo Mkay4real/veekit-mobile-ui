@@ -4,7 +4,8 @@ import  {type FC, useEffect, useState} from 'react';
 import {
    StyleSheet, View, Keyboard
 } from 'react-native';
-import {Input} from './input2';
+import {Input} from './input';
+import tw from '../../lib/tailwind';
 
 
 type props = {
@@ -31,6 +32,19 @@ export const CodeInput: FC<props> = ({
    Keyboard.dismiss();
   },[]);
 
+  /*
+ pinInputBox: {
+    width: 40,
+    height: 40,
+   // aspectRatio: 1,
+    borderRadius: 12,
+    borderWidth: 1,
+    marginHorizontal: 10,
+    borderColor: '#828282',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  */
   return (
     <View>
       <View style={styles.pinInputWrapper}>
@@ -40,7 +54,7 @@ export const CodeInput: FC<props> = ({
             <View
               key={index}
               style={[
-                styles.pinInputBox,
+                tw`w-10 h-10 rounded-md border mx-2.5 items-center justify-content-center`
               ]}
             >
              <Input 
@@ -61,18 +75,7 @@ export const CodeInput: FC<props> = ({
 };
 
 const styles = StyleSheet.create({
-  keyboardView: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
-  },
-  keyboardRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginVertical: 10,
-  },
+
   key: {
     width: 100,
     height: 64,

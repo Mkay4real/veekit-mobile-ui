@@ -12,3 +12,4 @@ export { GenericModal } from './generic-modal';
 export { FormInputContainer } from './form-input-container';
 export { Input } from './input';
 export { SearchInput } from './search-input';
+export { CodeInput } from './code-input';
