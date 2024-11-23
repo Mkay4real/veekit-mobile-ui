@@ -86,7 +86,8 @@ export const CodeInput: FC<props> = ({
   useEffect(() => {
    Keyboard.dismiss();
   },[]);
-
+   
+  const grayColor = `bg-gray-100`
   /*
  pinInputBox: {
     width: 40,
@@ -101,8 +102,7 @@ export const CodeInput: FC<props> = ({
   },
   */
   return (
-    <View>
-      <View style={[tw`mb-2.5 flex-row border-0 items-center justify-content-center`]}>
+    <View style={[tw`mb-2.5 flex-row border-0 items-center justify-content-center`]}>
         {new Array(length).fill('').map((_, index) => {
             
           return (
@@ -112,8 +112,10 @@ export const CodeInput: FC<props> = ({
              maxLength={Platform.OS === 'android' ? 1 : 6}
              key={index}
              style={[
-               tw`w-10 h-10 rounded-md border-0 mx-2.5 items-center justify-center`
+               tw`w-12 h-14 rounded-md  border-0 mx-2.5 text-gray-500 self-center text-center items-center justify-center`
              ]}
+             contentWrapperStyle={tw`${input[index] ? '' : 'bg-gray-100'} border-0`}
+             inputStyle={tw`${input[index] ? '' : 'bg-gray-100'} border-0 text-center`}
              ref={ref => (inputRefs.current[index] = ref)}
              value={input[index]}
              autoComplete='sms-otp'
@@ -126,7 +128,6 @@ export const CodeInput: FC<props> = ({
         })}
       </View>
       
-    </View>
   );
 };
 
