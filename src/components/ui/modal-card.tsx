@@ -45,13 +45,14 @@ export const ModalCard: FC<Prop> = ({
   }; 
   return (
    <View style={[tw`absolute right-0 left-0 bg-gray-100 rounded-xl px-6 py-4`,{bottom: bottom},style]}>
-      <View style={tw`flex-row items-end justify-center`}>
-      {title && <Text style={[tw`text-md-title font-bold mb-2`,{color: textColor}]}>{title}</Text>}
+      <View style={tw`my-2`}>
+      
       <TouchableOpacity
         onPress={goBack}
         style={tw`self-end mb-4`}>
        {hasCloseIcon && (<Icon iconType='svg' icon='x' color='#1D1D1B'/>)}
       </TouchableOpacity>
+      {title && <Text style={[tw`text-md-title self-center font-bold my-2`,{color: textColor}]}>{title}</Text>}
       </View>
      
       <View style={tw`mb-4`}>

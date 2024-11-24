@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
@@ -26,7 +27,7 @@ import {
 } from '../../types/InputHandler'
 import {formateCurrency, getAmountValue} from '../../common/utils';
 import Eye from '../../images/svgs/Eye';
-import EyeOff from '../../images/svgs/EyeOff';
+import EyeOff from '../../images/svgs/eye-off';
 //import Clipboard from '@react-native-clipboard/clipboard';
 import {FormInputContainer} from './form-input-container';
 import type {WlvaInput} from '../../types/WlvaInput';
@@ -57,6 +58,8 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
     keyboardType,
     leftItem,
     rightItem,
+    leftContainerStyle,
+    rightContainerStyle,
     onSubmitEditing,
     returnKeyType,
     onFocus,
@@ -491,6 +494,8 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
         editable={editable}
         leading={renderLeftIcon()}
         trailing={renderRightIcon()}
+        leftContainerStyle={leftContainerStyle}
+        rightContainerStyle={rightContainerStyle}
         focused={focused}
         style={contentWrapperStyle}
         error={error}

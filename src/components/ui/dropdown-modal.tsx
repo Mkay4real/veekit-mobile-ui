@@ -1,24 +1,31 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prettier/prettier */
 
 import  {
   forwardRef,
+  useEffect,
+  useState,
   type ForwardRefRenderFunction,
 } from 'react';
 import {
   Text,
   View,
+  TouchableOpacity
 } from 'react-native';
 import {GenericModal} from './generic-modal'; 
 import {ModalCard} from './modal-card';
 import tw from '../../lib/tailwind';
 import type { SelectOption } from '../../types/SelectOption';
+import { SearchInput } from './search-input';
 
 
 type props = {
   title: string,
-  hasSearch?: boolean,
+  modalTitle?: string,
+  data: SelectOption[],
   onClose: () => void,
-  onSearch?: (item:SelectOption) => void,
+  onSelect?: (item:string) => void,
+  searchPlaceholder: string
 };
 
 
@@ -30,27 +37,80 @@ export interface DropdownModalRef {
 
 
 
-const dmm:ForwardRefRenderFunction<DropdownModalRef,props> = ({
-  title,
-  onClose
+const ddm:ForwardRefRenderFunction<DropdownModalRef,props> = ({
+  title='',
+  modalTitle='',
+  data=[],
+  onClose,
+  onSelect,
+  searchPlaceholder
 }, ref) => {
-
-  const handlePin = (val='') => {
-   console.log('PIN currently: ',val);
-  };
  
+  const [searchValue,setSearchValue] = useState('')
+  const [filteredList, setFilteredList] = useState<SelectOption[]>([])
+
+  const handleSelect = (val='') => {
+    console.log('val currently: ',val);
+    typeof onSelect === 'function' && onSelect(val)
+    typeof onClose === 'function' && onClose()
+   }
+
+  const search = (val='') => {
+    console.log('searching for: ', val)
+  }
+
+  const renderOptions = () => {
+    if(filteredList.length > 0){
+      return (
+        filteredList.map((item,index) => (
+           <TouchableOpacity 
+           key={index} 
+           style={[
+            tw`w-full p-5 border-b border-gray-300 justify-content-center`
+          ]}
+           onPress={() => {handleSelect(item.value)}}
+           >
+             <Text style={[tw`text-md-title`]}>{item.label}</Text>
+           </TouchableOpacity>
+        ))
+      )
+    }
+    return null
+  } 
+
+  useEffect(() => {
+   if(filteredList.length < 1){
+    setFilteredList([
+       {label: "Select an option", value: 'none'},
+      ...data
+    ])
+   }
+  },[data,filteredList])
+
+  useEffect(() => {
+    search(searchValue)
+  },[searchValue])
 
   return (
     <GenericModal
       onClose={onClose}
       ref={ref}
      >
-      <ModalCard title={title} bottom={0} hasCloseIcon={true} onClose={onClose}>
+      <ModalCard title={modalTitle} bottom={0} hasCloseIcon={true} onClose={onClose}>
         <View style={[tw`justify-between`]}>
-          <Text style={[tw`text-md-title font-bold`]}>{title}</Text>
+          <Text style={[tw`text-lg-title`]}>{title}</Text>
 
           <View style={[tw`mb-5`]}>
-            <></>
+           <SearchInput
+              placeholder={searchPlaceholder}
+             value={searchValue}
+              onChange={setSearchValue}
+            />
+            
+            <View style={[tw`mt-2 divide-y`]}>
+              {renderOptions()}
+            </View>
+            
           </View>
         </View>
       </ModalCard>
@@ -59,4 +119,4 @@ const dmm:ForwardRefRenderFunction<DropdownModalRef,props> = ({
 };
 
 
- export const DropdownModal = forwardRef<DropdownModalRef,props>(dmm);
+ export const DropdownModal = forwardRef<DropdownModalRef,props>(ddm);

@@ -27,6 +27,8 @@ export interface WlvaInput {
     text?: string;
     leftItem?: JSX.Element;
     rightItem?: JSX.Element;
+    leftContainerStyle?: StyleProp<ViewStyle>;
+    rightContainerStyle?: StyleProp<ViewStyle>;
     onChangeText?: (t: string) => void;
     onChange?: (t: string) => void;
     inputStyle?: StyleProp<TextStyle>;
