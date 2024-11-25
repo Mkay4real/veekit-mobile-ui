@@ -1232,7 +1232,7 @@ PODS:
     - Yoga
   - react-native-safe-area-context (4.14.0):
     - React-Core
-  - react-native-veekit-mobile-ui (0.1.1):
+  - react-native-veekit-mobile-ui (0.1.8):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.01.01.00)
@@ -1894,7 +1894,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 475ea38712131abd7f7935c82a41364cea2fa01f
   react-native-document-picker: ccca729bfa32ac6f20db6c48dd8ad4ca29ea8795
   react-native-safe-area-context: 4532f1a0c5d34a46b9324ccaaedcb5582a302b7d
-  react-native-veekit-mobile-ui: 55c45cf9a7c437374f8bc4e07884f12a040dfe52
+  react-native-veekit-mobile-ui: 00964814a1a97c9dcfbbdd7a06dc75ee3d346951
   React-nativeconfig: 8c83d992b9cc7d75b5abe262069eaeea4349f794
   React-NativeModulesApple: b8465afc883f5bf3fe8bac3767e394d581a5f123
   React-perflogger: 59e1a3182dca2cee7b9f1f7aab204018d46d1914
@@ -1928,8 +1928,8 @@ SPEC CHECKSUMS:
   RNSVG: 8b1a777d54096b8c2a0fd38fc9d5a454332bbb4d
   RNVectorIcons: 0cbcb1c0cb6da1ca1d43d3d990255e584bb99028
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  Yoga: 055f92ad73f8c8600a93f0e25ac0b2344c3b07e6
+  Yoga: aa3df615739504eebb91925fc9c58b4922ea9a08
 
 PODFILE CHECKSUM: 829b1c5f0fa3020606fdf5a4067db4e134250548
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

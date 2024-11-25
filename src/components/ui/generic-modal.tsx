@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prettier/prettier */
 
@@ -10,7 +9,6 @@ import  {
     useMemo
   } from 'react';
   import {
-    StyleSheet,
     ScrollView,
     View,
     KeyboardAvoidingView,
@@ -19,6 +17,7 @@ import  {
   } from 'react-native';
 
   import  Modal from 'react-native-modal';
+import tw from '../../lib/tailwind';
   
   type props = {
     style?: ViewStyle,
@@ -39,7 +38,6 @@ import  {
     children,
     scrollable=false
   }, ref) => {
-    const styles = useStyle();
 
     const [visible, setVisible] = useState(false);
 
@@ -68,15 +66,14 @@ import  {
         if(scrollable){
           return (
           
-          <ScrollView contentContainerStyle={[styles.modal, style]} /*style={{flex: 1, height: '100%', paddingTop: '100%'}}*/>
+          <ScrollView contentContainerStyle={[tw`flex-1 py-6 px-6`, style]}>
            {children}
           </ScrollView>
           );
         }
         else{
           return (
-           
-            <View style={[styles.modal, style]}>
+            <View style={[tw`flex-1 py-6 px-6`, style]}>
             {children}
              </View>
           );
@@ -86,46 +83,14 @@ import  {
       const behavior = useMemo(()=> (Platform.OS === 'android'? 'height': 'padding'), []);
   
     return (
-        <Modal style={{width: '100%', alignSelf:'center'}} isVisible={visible} animationIn='slideInUp' animationOut='slideOutDown'>
-         <KeyboardAvoidingView style={{flex: 1}} behavior={behavior}>
+        <Modal style={[tw`w-full self-center`]} isVisible={visible} animationIn='slideInUp' animationOut='slideOutDown'>
+         <KeyboardAvoidingView style={[tw`flex-1`]} behavior={behavior}>
            {renderContent()}
          </KeyboardAvoidingView>
        
       </Modal>
     );
   };
-
-  const useStyle = () => {
-  
-    const styles = StyleSheet.create({
-      wrapper: {
-        backgroundColor: '#E7E7E7',
-        //flex: 1,
-        height: 474
-      },
-      header: {
-        alignItems: 'flex-start',
-        paddingLeft: 16,
-        marginTop: 17,
-      },
-      title: {
-        color: '#000000',
-        fontSize: 18,
-        //lineHeight: responsiveFonts.h(25),
-        textAlign: 'center',
-        marginTop: '30%',
-      },
-      modal: {
-          flex: 1,
-          paddingVertical: 24,
-          paddingHorizontal: 24,
-          backgroundColor: 'rgba(0,0,0, 0.5)',
-        },
-    });
-
-    return styles;
-  };
-  
   
   
   export const GenericModal = forwardRef<GenericModalRef,props>(gm);

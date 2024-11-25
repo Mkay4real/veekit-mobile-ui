@@ -27,6 +27,8 @@ export interface WlvaInput {
     text?: string;
     leftItem?: JSX.Element;
     rightItem?: JSX.Element;
+    leftContainerStyle?: StyleProp<ViewStyle>;
+    rightContainerStyle?: StyleProp<ViewStyle>;
     onChangeText?: (t: string) => void;
     onChange?: (t: string) => void;
     inputStyle?: StyleProp<TextStyle>;
@@ -46,6 +48,9 @@ export interface WlvaInput {
     formate?: 'amount';
     active?: boolean;
     numberOfLines?: number,
-    errorLabel?: string
+    errorLabel?: string,
+    autofocus?: boolean,
+    onKeyPress?: (e:any) => void,
+    noAnim0?: boolean;
   }
   

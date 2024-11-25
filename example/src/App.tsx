@@ -20,6 +20,8 @@ import {
   Tabs,
   Text as AppText,
   KeyPad,
+  Dropdown,
+  DropdownModal,
   // ui,
 } from 'react-native-veekit-mobile-ui';
 
@@ -32,6 +34,8 @@ import {
   PinInputModal,
   type PinInputModalRef,
 } from 'react-native-veekit-mobile-ui';
+import type { DropdownModalRef } from '../../src/components/ui/dropdown-modal';
+import type { SelectOption } from '../../src/types/SelectOption';
 
 // const {
 //   Button,
@@ -50,7 +54,19 @@ export default function App() {
   const [value1, setValue1] = useState<string | undefined>();
   const [value2, setValue2] = useState<string | undefined>();
   const [value3, setValue3] = useState<string | undefined>();
+  const [gender, setGender] = useState<string>('');
   const sampleModalRef = useRef<PinInputModalRef>(null);
+
+  const selectRef = useRef<DropdownModalRef>(null);
+
+  const genders: SelectOption[] = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+  ];
+
+  const toggleModal = () => {
+    selectRef?.current?.toggleModal();
+  };
 
   // verifyInstallation();
   /* eslint-disable react-native/no-inline-styles */
@@ -67,6 +83,11 @@ export default function App() {
   const showModal = () => {
     sampleModalRef?.current?.toggleModal();
   };
+
+  const onSelect = (val:string) => {
+    console.log('selected gender: ',val)
+    setGender(val)
+  }
 
 
   useEffect(() => {
@@ -124,7 +145,7 @@ export default function App() {
             {/* <Pressable /> */}
           </Slot.Pressable>
           {/* <KeyPad type="decimal" /> */}
-          <KeyPad />
+          <KeyPad type='decimal'/>
           <Avatar color="warning" initials="PP" size={2} />
           <View style={{padding: 40, gap: 5}}>
 
@@ -188,8 +209,7 @@ export default function App() {
         <Row>
           <View style={{width: '90%'}}>
             <Input
-              placeholder='Enter text here'
-              label='Text input'
+              placeholder='Email address'
               value={value1}
               onChangeText={(t) => { setValue1(t); }}
             />
@@ -199,9 +219,8 @@ export default function App() {
         <Row>
           <View style={{width: '90%'}}>
             <SearchInput
-              placeholder='Enter text here'
-              label='Search input'
-              value={value2}
+              placeholder='Bank name, account name or account number'
+             value={value2}
               onChange={setValue2}
             />
 
@@ -211,8 +230,7 @@ export default function App() {
         <Row>
           <View style={{width: '90%'}}>
             <Input
-              placeholder='Enter text here'
-              label='Password input'
+              placeholder='Password'
               secure={true}
               value={value3}
               onChange={setValue3}
@@ -221,7 +239,7 @@ export default function App() {
           </View>
         </Row>
 
-        <Text style={[styles.headerTitle, {marginTop: 10}]}>PIN input</Text>
+        <Text style={[styles.headerTitle, {marginTop: 10}]}>Code input</Text>
         <Row>
           <View style={{width: '90%'}}>
             <CodeInput
@@ -229,7 +247,7 @@ export default function App() {
             />
           </View>
         </Row>
-        <Text style={[styles.headerTitle, {marginTop: 10}]}>PIN input</Text>
+        <Text style={[styles.headerTitle, {marginTop: 10}]}>PIN input modal</Text>
         <Row>
 
           <View style={{width: '90%'}}>
@@ -242,6 +260,19 @@ export default function App() {
           </View>
         </Row>
 
+        <Text style={[styles.headerTitle, {marginTop: 10}]}>Dropdown</Text>
+        <Row>
+        <View style={{width: '90%', marginBottom:10}}>
+          <Dropdown
+           title='Select gender'
+           data={[]}
+           value={gender}
+           onClick={toggleModal}
+          />
+        </View>
+          
+        </Row>
+
 
 
         {/*<Text className="text-red-100 bg-[green]">Result: {result}</Text>*/}
@@ -251,6 +282,15 @@ export default function App() {
           onClose={showModal}
           ref={sampleModalRef}
         />
+
+       <DropdownModal
+        ref={selectRef}
+        onClose={toggleModal}
+        title='Select your gender'
+        searchPlaceholder='Search genders'
+        data={genders}
+        onSelect={onSelect}
+      />
       </View>
     </ScrollView>
   );
