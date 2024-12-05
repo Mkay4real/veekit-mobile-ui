@@ -16,14 +16,14 @@ import { FormInputContainer } from './form-input-container';
 import Text from './text';
 
 
-type props = {
-    title: string,
-    data: SelectOption[],
-    value: string,
-    onClick: (val:string) => void
-  }
+export type DropdownProps = {
+  title: string,
+  data: SelectOption[],
+  value: string,
+  onClick: (val:string) => void
+}
 
-export const Dropdown: FC<props> = ({
+export const Dropdown: FC<DropdownProps> = ({
   title='',
   data = [],
   value='',
