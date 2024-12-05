@@ -1,3 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+
 import '../global.css';
 // import { verifyInstallation } from 'nativewind';
 import { useState, useEffect, type ReactNode, useRef } from 'react';
@@ -21,7 +24,6 @@ import {
   Text as AppText,
   KeyPad,
   Dropdown,
-  DropdownModal,
   // ui,
 } from 'react-native-veekit-mobile-ui';
 
@@ -34,8 +36,8 @@ import {
   PinInputModal,
   type PinInputModalRef,
 } from 'react-native-veekit-mobile-ui';
-import type { DropdownModalRef } from '../../src/components/ui/dropdown-modal';
 import type { SelectOption } from '../../src/types/SelectOption';
+import type { InputHandler } from '../../src/types/InputHandler';
 
 // const {
 //   Button,
@@ -57,20 +59,15 @@ export default function App() {
   const [gender, setGender] = useState<string>('');
   const sampleModalRef = useRef<PinInputModalRef>(null);
 
-  const selectRef = useRef<DropdownModalRef>(null);
+  const selectRef = useRef<InputHandler>(null);
 
   const genders: SelectOption[] = [
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' },
   ];
 
-  const toggleModal = () => {
-    selectRef?.current?.toggleModal();
-  };
-
   // verifyInstallation();
-  /* eslint-disable react-native/no-inline-styles */
-  /* eslint-disable prettier/prettier */
+  
 
 
   const displayResult = () => {
@@ -89,6 +86,9 @@ export default function App() {
     setGender(val)
   }
 
+  const checkGender = () => {
+    selectRef?.current?.checkValidation()
+  }
 
   useEffect(() => {
     multiply(3, 7).then(setResult);
@@ -265,12 +265,18 @@ export default function App() {
         <View style={{width: '100%', marginBottom:10}}>
           <Dropdown
            title='Select gender'
+           validationRules='required'
            data={genders}
            value={gender}
-           onClick={toggleModal}
+           onSelected={onSelect}
+           ref={selectRef}
           />
         </View>
           
+        
+        </Row>
+        <Row>
+        <Button text='Check gender' size={'sm'} variant='solid' onPress={checkGender} />
         </Row>
 
 

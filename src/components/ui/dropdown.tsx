@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-hooks/rules-of-hooks */
 
-import  {type FC, useEffect, useRef, useState} from 'react';
+import  {
+  type FC,
+  useEffect, useRef, useState,
+  forwardRef, type ForwardRefRenderFunction,
+  useImperativeHandle
+} from 'react';
 import {
     View, Keyboard,
    Platform,
@@ -14,22 +20,33 @@ import { DropdownModal, type DropdownModalRef } from './dropdown-modal';
 import ChevronDown from '../../images/svgs/chevron-down';
 import { FormInputContainer } from './form-input-container';
 import Text from './text';
+import type { InputHandler } from '../../types/InputHandler';
+
 
 
 export type DropdownProps = {
+  key?: number;
   title: string,
   data: SelectOption[],
-  value: string,
-  onClick: (val:string) => void
+  value?: string,
+  searchPlaceholder?: string,
+  validationRules?: string,
+  onSelected: (val:string) => void,
+  disabled?: boolean;
 }
 
-export const Dropdown: FC<DropdownProps> = ({
+const dd: ForwardRefRenderFunction<InputHandler,DropdownProps> = ({
+  key,
   title='',
   data = [],
   value='',
-  onClick
-}) => {
+  searchPlaceholder='Search',
+  onSelected,
+  validationRules,
+  disabled=false
+},ref) => {
   const [selectedValue, setSelectedValue] = useState<string>('');
+  const [error, setError] = useState(false);
   const selectRef = useRef<DropdownModalRef>(null);
 
   const toggleModal = () => {
@@ -40,15 +57,53 @@ export const Dropdown: FC<DropdownProps> = ({
     setSelectedValue(v)
   }
 
+  const validate = () => {
+    let errorCount = 0;
+    if (validationRules) {
+      const rules = validationRules.split('|');
+      if (rules.includes('required')) {
+        errorCount = (selectedValue === '' || selectedValue === 'none') ? 1 : 0;
+       setError(errorCount > 0);
+      }
+    }
+    return errorCount;
+  };
+
+
+  useImperativeHandle(ref, () => ({
+    focusInput: () => {
+      toggleModal()
+    },
+    checkValidation: () => {
+      let errorCount = validate();
+      return errorCount;
+    },
+    getValue() {
+      if(selectedValue) {
+        return selectedValue;
+      } 
+      return '';
+    },
+  }));
+
   const grayColor = `bg-gray-100`
+
+  const renderErrorMessage = () => {
+    if(error){
+      return (
+        <Text style={[tw`mt-1 text-lg-body text-rose-500`]}>This field is required</Text>
+      )
+    }
+    return null
+  }
 
   useEffect(() => {
    setSelectedValue(value)
   },[value])
 
   useEffect(() => {
-    typeof onClick === 'function' && onClick(selectedValue)
-  },[selectedValue,onClick])
+    typeof onSelected === 'function' && onSelected(selectedValue)
+  },[selectedValue,onSelected])
 
   return (
     <View style={tw`w-full`}>
@@ -61,16 +116,19 @@ export const Dropdown: FC<DropdownProps> = ({
                 <Text style={[tw`text-lg-body capitalize`]}>{selectedValue}</Text>
             </View>
         </FormInputContainer>
+        {renderErrorMessage()}
 
         <DropdownModal
         ref={selectRef}
         onClose={toggleModal}
-        title='Select your gender'
-        searchPlaceholder='Search genders'
+        title={title}
+        searchPlaceholder={searchPlaceholder}
         data={data}
         onSelect={onSelect}
       />
     </View>    
   );
 };
+
+export const Dropdown = forwardRef(dd);
 
