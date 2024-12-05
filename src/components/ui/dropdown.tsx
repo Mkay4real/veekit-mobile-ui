@@ -20,7 +20,7 @@ type props = {
     title: string,
     data: SelectOption[],
     value: string,
-    onClick: () => void
+    onClick: (val:string) => void
   }
 
 export const Dropdown: FC<props> = ({
@@ -29,29 +29,47 @@ export const Dropdown: FC<props> = ({
   value='',
   onClick
 }) => {
-  const [selectedValue, setSelectedValue] = useState<string>();
+  const [selectedValue, setSelectedValue] = useState<string>('');
+  const selectRef = useRef<DropdownModalRef>(null);
 
-  const next = () => {
-    typeof onClick === 'function' && onClick()
+  const toggleModal = () => {
+    selectRef?.current?.toggleModal();
+  };
+
+  const onSelect = (v:string) => {
+    setSelectedValue(v)
   }
-   
+
   const grayColor = `bg-gray-100`
 
   useEffect(() => {
    setSelectedValue(value)
   },[value])
 
+  useEffect(() => {
+    typeof onClick === 'function' && onClick(selectedValue)
+  },[selectedValue,onClick])
+
   return (
     <View style={tw`w-full`}>
       <FormInputContainer
-         onFocus={next}
+         onFocus={toggleModal}
          trailing={<ChevronDown/>}
         >
             <View>
                 <Text style={[tw`mb-2`]}>{title}</Text>
-                <Text style={[tw`text-lg-body capitalize`]}>{value}</Text>
+                <Text style={[tw`text-lg-body capitalize`]}>{selectedValue}</Text>
             </View>
         </FormInputContainer>
+
+        <DropdownModal
+        ref={selectRef}
+        onClose={toggleModal}
+        title='Select your gender'
+        searchPlaceholder='Search genders'
+        data={data}
+        onSelect={onSelect}
+      />
     </View>    
   );
 };

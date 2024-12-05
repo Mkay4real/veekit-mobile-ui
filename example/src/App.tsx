@@ -207,7 +207,7 @@ export default function App() {
 
         <Text style={[styles.headerTitle, {marginTop: 10}]}>Inputs</Text>
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{width: '100%'}}>
             <Input
               placeholder='Email address'
               value={value1}
@@ -217,7 +217,7 @@ export default function App() {
         </Row>
 
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{width: '100%'}}>
             <SearchInput
               placeholder='Bank name, account name or account number'
              value={value2}
@@ -228,7 +228,7 @@ export default function App() {
         </Row>
 
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{width: '100%'}}>
             <Input
               placeholder='Password'
               secure={true}
@@ -262,10 +262,10 @@ export default function App() {
 
         <Text style={[styles.headerTitle, {marginTop: 10}]}>Dropdown</Text>
         <Row>
-        <View style={{width: '90%', marginBottom:10}}>
+        <View style={{width: '100%', marginBottom:10}}>
           <Dropdown
            title='Select gender'
-           data={[]}
+           data={genders}
            value={gender}
            onClick={toggleModal}
           />
@@ -283,14 +283,7 @@ export default function App() {
           ref={sampleModalRef}
         />
 
-       <DropdownModal
-        ref={selectRef}
-        onClose={toggleModal}
-        title='Select your gender'
-        searchPlaceholder='Search genders'
-        data={genders}
-        onSelect={onSelect}
-      />
+      
       </View>
     </ScrollView>
   );
