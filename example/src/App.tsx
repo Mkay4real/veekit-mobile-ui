@@ -192,15 +192,15 @@ export default function App() {
           <View style={{marginLeft: 10}}>
             <Text style={styles.sectionTitle}>IonIcons</Text>
             <Row>
-              <Icon iconType="IonIcons" icon="add" color="red" />
+              <Icon iconType="IonIcons" icon="airplane" color="red" />
               <Icon iconType="IonIcons" icon="search" color="red" />
             </Row>
           </View>
           <View style={{marginLeft: 10}}>
-            <Text style={styles.sectionTitle}>MaterialCommunityIcons</Text>
+            <Text style={styles.sectionTitle}>FontAwesome</Text>
             <Row>
-              <Icon iconType="MaterialCommunityIcons" icon="airplane" color="red" />
-              <Icon iconType="MaterialCommunityIcons" icon="bat" color="red" />
+              <Icon iconType="FontAwesome" icon="airplane" color="red" />
+              <Icon iconType="FontAwesome" icon="battery-half" color="red" />
             </Row>
           </View>
         </Row>
