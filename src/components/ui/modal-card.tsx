@@ -29,9 +29,9 @@ export const ModalCard: FC<Prop> = ({
   children, 
   style, 
   subtitle, 
-  title,
+  title="",
   hasCloseIcon=false,
-  bottom=50,
+  bottom=0,
   textColor="#0D0D0D",
   onClose
 }) => {
