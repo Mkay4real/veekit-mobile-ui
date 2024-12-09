@@ -488,7 +488,7 @@ const ipt: ForwardRefRenderFunction<InputHandler, WlvaInput> = (
 
   return (
     <View style={style}>
-      {!noLabel &&  <Text style={{fontSize: 14, fontWeight: '500'}}>{errorMessage}</Text>}
+      {/*!noLabel &&  <Text style={{fontSize: 14, fontWeight: '500'}}>{errorMessage}</Text>*/}
       <FormInputContainer
         onFocus={focusInput}
         editable={editable}

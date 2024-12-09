@@ -102,7 +102,7 @@ export const CodeInput: FC<props> = ({
   },
   */
   return (
-    <View style={[tw`mb-2.5 flex-row border-0 items-center justify-content-center`]}>
+    <View style={[tw`mb-2.5 flex-row border-0 place-content-between justify-content-center`]}>
         {new Array(length).fill('').map((_, index) => {
             
           return (

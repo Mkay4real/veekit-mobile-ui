@@ -1,3 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+
 import '../global.css';
 // import { verifyInstallation } from 'nativewind';
 import { useState, useEffect, type ReactNode, useRef } from 'react';
@@ -21,7 +24,6 @@ import {
   Text as AppText,
   KeyPad,
   Dropdown,
-  DropdownModal,
   // ui,
 } from 'react-native-veekit-mobile-ui';
 
@@ -34,8 +36,8 @@ import {
   PinInputModal,
   type PinInputModalRef,
 } from 'react-native-veekit-mobile-ui';
-import type { DropdownModalRef } from '../../src/components/ui/dropdown-modal';
 import type { SelectOption } from '../../src/types/SelectOption';
+import type { InputHandler } from '../../src/types/InputHandler';
 
 // const {
 //   Button,
@@ -57,20 +59,15 @@ export default function App() {
   const [gender, setGender] = useState<string>('');
   const sampleModalRef = useRef<PinInputModalRef>(null);
 
-  const selectRef = useRef<DropdownModalRef>(null);
+  const selectRef = useRef<InputHandler>(null);
 
   const genders: SelectOption[] = [
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' },
   ];
 
-  const toggleModal = () => {
-    selectRef?.current?.toggleModal();
-  };
-
   // verifyInstallation();
-  /* eslint-disable react-native/no-inline-styles */
-  /* eslint-disable prettier/prettier */
+  
 
 
   const displayResult = () => {
@@ -89,6 +86,9 @@ export default function App() {
     setGender(val)
   }
 
+  const checkGender = () => {
+    selectRef?.current?.checkValidation()
+  }
 
   useEffect(() => {
     multiply(3, 7).then(setResult);
@@ -192,22 +192,22 @@ export default function App() {
           <View style={{marginLeft: 10}}>
             <Text style={styles.sectionTitle}>IonIcons</Text>
             <Row>
-              <Icon iconType="IonIcons" icon="add" color="red" />
+              <Icon iconType="IonIcons" icon="airplane" color="red" />
               <Icon iconType="IonIcons" icon="search" color="red" />
             </Row>
           </View>
           <View style={{marginLeft: 10}}>
-            <Text style={styles.sectionTitle}>MaterialCommunityIcons</Text>
+            <Text style={styles.sectionTitle}>FontAwesome</Text>
             <Row>
-              <Icon iconType="MaterialCommunityIcons" icon="airplane" color="red" />
-              <Icon iconType="MaterialCommunityIcons" icon="bat" color="red" />
+              <Icon iconType="FontAwesome" icon="airplane" color="red" />
+              <Icon iconType="FontAwesome" icon="battery-half" color="red" />
             </Row>
           </View>
         </Row>
 
         <Text style={[styles.headerTitle, {marginTop: 10}]}>Inputs</Text>
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{width: '100%'}}>
             <Input
               placeholder='Email address'
               value={value1}
@@ -217,7 +217,7 @@ export default function App() {
         </Row>
 
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{width: '100%'}}>
             <SearchInput
               placeholder='Bank name, account name or account number'
              value={value2}
@@ -228,7 +228,7 @@ export default function App() {
         </Row>
 
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{width: '100%'}}>
             <Input
               placeholder='Password'
               secure={true}
@@ -262,15 +262,21 @@ export default function App() {
 
         <Text style={[styles.headerTitle, {marginTop: 10}]}>Dropdown</Text>
         <Row>
-        <View style={{width: '90%', marginBottom:10}}>
+        <View style={{width: '100%', marginBottom:10}}>
           <Dropdown
            title='Select gender'
-           data={[]}
+           validationRules='required'
+           data={genders}
            value={gender}
-           onClick={toggleModal}
+           onSelected={onSelect}
+           ref={selectRef}
           />
         </View>
           
+        
+        </Row>
+        <Row>
+        <Button text='Check gender' size={'sm'} variant='solid' onPress={checkGender} />
         </Row>
 
 
@@ -283,14 +289,7 @@ export default function App() {
           ref={sampleModalRef}
         />
 
-       <DropdownModal
-        ref={selectRef}
-        onClose={toggleModal}
-        title='Select your gender'
-        searchPlaceholder='Search genders'
-        data={genders}
-        onSelect={onSelect}
-      />
+      
       </View>
     </ScrollView>
   );

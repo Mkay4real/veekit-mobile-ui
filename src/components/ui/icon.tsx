@@ -2,13 +2,13 @@
 
 import { View} from 'react-native';
 import {type FC} from 'react';
-import IonIcons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonIcons from '@react-native-vector-icons/ionicons';
+import FontAwesomeIcon from '@react-native-vector-icons/fontawesome';
 import {getSvgIcon} from '../../common/utils';
 import tw from '../../lib/tailwind';
 
 type props = {
-iconType: 'svg' | 'IonIcons' | 'MaterialCommunityIcons',
+iconType: 'svg' | 'IonIcons' | 'FontAwesome',
 icon: string,
 color: string
 size?: number
@@ -32,8 +32,8 @@ size
             size={size ? size : 20}
           />;
         }
-        if(icon && iconType === 'MaterialCommunityIcons') {
-            return <MaterialCommunityIcons
+        if(icon && iconType === 'FontAwesome') {
+            return <FontAwesomeIcon
             name={icon} 
             style={[tw`self-center`]} 
             color={color}
