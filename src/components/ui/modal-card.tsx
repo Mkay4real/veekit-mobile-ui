@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import tw from '../../lib/tailwind';
 import { Icon } from '.';
-//import Ionicons from 'react-native-vector-icons/Ionicons'
 
 
 type Prop = {

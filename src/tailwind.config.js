@@ -42,26 +42,15 @@ const letterSpacing = {
   '5xl': '-0.4px',
 };
 const styleFontFamilyMap = {
-  body: 'regular',
-  title: 'medium',
-  head: 'semibold',
-  bold: 'bold',
+  // body: 'regular',
+  // title: 'medium',
+  // head: 'semibold',
+  // bold: 'bold',
+  regular: ['DMSans-Regular', 'sans-serif'],
+  medium: ['DMSans-Medium', 'sans-serif'],
+  semibold: ['DMSans-SemiBold', 'sans-serif'],
+  bold: ['DMSans-Bold', 'sans-serif'],
 }
-
-// const updatedFontsizes = {};
-// sizes.forEach(size => {
-//   styles.forEach(style => {
-//     updatedFontsizes[`.text-${size}-${style}`] = ({
-//       [fontSize[size], {
-//         lineHeight: lineHeight[size],
-//         fontFamily: styleFontFamilyMap[style],
-//         letterSpacing: letterSpacing[size]
-//       }]
-
-
-//   })
-//   })
-// })
 
 const updatedFontSizes = {};
 
@@ -75,10 +64,22 @@ sizes.forEach(size => {
         letterSpacing: letterSpacing[size]
       }
       ];
+    // updatedFontSizes[`.text-${size}-${style}`] =
+    // {
+    //   fontSize: fontSize[size],
+    //   lineHeight: lineHeight[size]+'',
+    //   fontFamily: styleFontFamilyMap[style],
+    //   letterSpacing: letterSpacing[size],
+
+    //   // fontSize: theme(`fontSize.${size}`),
+    //   // lineHeight: theme(`lineHeight.${size}`),
+    //   // fontFamily: theme(`fontFamily.${styleFontFamilyMap[style]}`),
+    //   // letterSpacing: theme(`letterSpacing.${size}`),
+    // }
   });
 });
 
-// console.log({ updatedFontSizes });
+// console.log("---", JSON.stringify(updatedFontSizes));
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -248,19 +249,21 @@ module.exports = {
       // sizes.forEach(size => {
       //   styles.forEach(style => {
       //     newUtilities[`.text-${size}-${style}`] = {
-      //       // fontSize: (`fontSize.${size}`),
-      //       // lineHeight: (`lineHeight.${size}`),
-      //       // fontFamily: (`fontFamily.${styleFontFamilyMap[style]}`),
-      //       // letterSpacing: (`letterSpacing.${size}`),
-      //       fontSize: theme(`fontSize.${size}`),
-      //       lineHeight: theme(`lineHeight.${size}`),
-      //       fontFamily: theme(`fontFamily.${styleFontFamilyMap[style]}`),
-      //       letterSpacing: theme(`letterSpacing.${size}`),
+      //       fontSize: (`fontSize.${size}`),
+      //       lineHeight: (`lineHeight.${size}`),
+      //       fontFamily: (`fontFamily.${styleFontFamilyMap[style]}`),
+      //       letterSpacing: (`letterSpacing.${size}`),
+      //       // fontSize: theme(`fontSize.${size}`),
+      //       // lineHeight: theme(`lineHeight.${size}`),
+      //       // fontFamily: theme(`fontFamily.${styleFontFamilyMap[style]}`),
+      //       // letterSpacing: theme(`letterSpacing.${size}`),
       //     }
       //   })
       // })
 
-      addUtilities(updatedFontSizes)
+      addUtilities({
+        ...updatedFontSizes
+      })
       // addUtilities(newUtilities)
 
     }),

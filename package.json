@@ -1,6 +1,6 @@
 {
   "name": "react-native-veekit-mobile-ui",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Reusable Veekit Mobile UI",
   "source": "src/index.tsx",
   "main": "lib/commonjs/index.js",
