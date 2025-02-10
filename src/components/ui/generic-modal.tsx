@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import {
   forwardRef,
   type ForwardRefRenderFunction,
@@ -30,10 +28,10 @@ export interface GenericModalRef {
   closeModal(): void;
 }
 
-const gm: ForwardRefRenderFunction<GenericModalRef, props> = (
-  { style, onClose: _onClose, children, scrollable = false },
-  ref
-) => {
+const GenericModalComponent: ForwardRefRenderFunction<
+  GenericModalRef,
+  props
+> = ({ style, onClose: _onClose, children, scrollable = false }, ref) => {
   const [visible, setVisible] = useState(false);
 
   const toggle = () => {
@@ -88,4 +86,6 @@ const gm: ForwardRefRenderFunction<GenericModalRef, props> = (
   );
 };
 
-export const GenericModal = forwardRef<GenericModalRef, props>(gm);
+export const GenericModal = forwardRef<GenericModalRef, props>(
+  GenericModalComponent
+);

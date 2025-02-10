@@ -4,6 +4,7 @@ import IonIcons from '@react-native-vector-icons/ionicons';
 import FontAwesomeIcon from '@react-native-vector-icons/fontawesome';
 import { getSvgIcon } from '../../common/utils';
 import tw from '../../lib/tailwind';
+import { scale } from 'react-native-size-matters';
 
 type props = {
   iconType: 'svg' | 'IonIcons' | 'FontAwesome';
@@ -20,7 +21,7 @@ export const Icon: FC<props> = ({ icon, iconType, color, size }) => {
           name={icon}
           style={[tw`self-center`]}
           color={color}
-          size={size ? size : 20}
+          size={scale(size ? size : 20)}
         />
       );
     }
@@ -30,7 +31,7 @@ export const Icon: FC<props> = ({ icon, iconType, color, size }) => {
           name={icon}
           style={[tw`self-center`]}
           color={color}
-          size={size ? size : 20}
+          size={scale(size ? size : 20)}
         />
       );
     } else if (iconType === 'svg') {
