@@ -1253,7 +1253,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-veekit-mobile-ui (0.1.8):
+  - react-native-veekit-mobile-ui (0.1.11):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.01.01.00)
@@ -1895,7 +1895,7 @@ SPEC CHECKSUMS:
   react-native-document-picker: ccca729bfa32ac6f20db6c48dd8ad4ca29ea8795
   react-native-safe-area-context: 4532f1a0c5d34a46b9324ccaaedcb5582a302b7d
   react-native-vector-icons: bac9d1d3e2841cc0a802b122d75684b7e8e0a790
-  react-native-veekit-mobile-ui: 00964814a1a97c9dcfbbdd7a06dc75ee3d346951
+  react-native-veekit-mobile-ui: 40003990dce5f4b909ccf929441c09b0dc2ccbe0
   React-nativeconfig: 8c83d992b9cc7d75b5abe262069eaeea4349f794
   React-NativeModulesApple: b8465afc883f5bf3fe8bac3767e394d581a5f123
   React-perflogger: 59e1a3182dca2cee7b9f1f7aab204018d46d1914

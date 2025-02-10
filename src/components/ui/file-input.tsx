@@ -10,12 +10,14 @@ import TrashIcon from '../../icons/trash';
 interface FileInputProps {
   onFileSelect?: (file: DocumentPickerResponse | null) => void;
   acceptedFormats?: string[];
+  acceptedFormatsText?: string[];
   maxSize?: number; // in bytes
 }
 
 const FileInput: React.FC<FileInputProps> = ({
   onFileSelect,
-  acceptedFormats = ['jpg', 'png', 'pdf'],
+  acceptedFormats = ['image/jpg', 'images', 'png', 'pdf'],
+  acceptedFormatsText = ['jpg', 'png', 'pdf'],
   maxSize = 5 * 1024 * 1024, // 5MB default
 }) => {
   const [selectedFile, setSelectedFile] =
@@ -27,7 +29,7 @@ const FileInput: React.FC<FileInputProps> = ({
         //@ts-ignore
         type: acceptedFormats.map(
           //@ts-ignore
-          (format) => DocumentPicker.types[format.toUpperCase()] || format
+          (format) => DocumentPicker.types[format.toLocaleLowerCase()] || format
         ),
         // type: DocumentPicker.types.images,// acceptedFormats.map(format => DocumentPicker.types[format.toUpperCase()] || format),
         copyTo: 'cachesDirectory',
@@ -68,7 +70,8 @@ const FileInput: React.FC<FileInputProps> = ({
               <Text style={tw`text-gray-700 font-medium`}>Browse file</Text>
             </TouchableOpacity>
             <Text style={tw`text-gray-500 text-sm-body`}>
-              Accepted file format: {acceptedFormats.join(', ').toUpperCase()}
+              Accepted file format:{' '}
+              {acceptedFormatsText.join(', ').toUpperCase()}
             </Text>
           </View>
         ) : (
