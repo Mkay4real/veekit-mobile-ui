@@ -44,7 +44,7 @@ const KeyPad: React.FC<KeyPadProps> = ({
   ];
 
   if (type === 'biometric') {
-    keys[3] = [KEY_BIO, '0', KEY_BACKSPACE];
+    keys[4] = ['', KEY_BIO, ''];
   }
 
   useEffect(() => {
@@ -71,25 +71,22 @@ const KeyPad: React.FC<KeyPadProps> = ({
       {keys.map((row, rowIndex) => (
         <View
           key={rowIndex}
-          style={tw`flex-row w-full  justify-between mb-btn-hg-1`}
+          style={tw`flex-row w-full justify-between mb-btn-hg-1`}
         >
           {row.map((key, keyIndex) => (
             <TouchableOpacity
               key={'key' + keyIndex}
               onPress={() => handleKeyPress(key)}
               // className={`w-[32%] h-5xl p-lg rounded-full justify-center items-center bg-['transparent']`}
-              style={tw`w-[28%] h-5xl p-[14] py-[24] rounded-sm justify-center items-center bg-[#F6F6F6]`}
+              style={tw`w-[28%] h-5xl p-[14] py-[24] rounded-md justify-center items-center ${key === KEY_BIO || key.length < 1 ? '' : 'bg-[#F6F6F6]'}`}
             >
               {key === KEY_BIO ? (
-                <FingerprintIcon
-                  color={colors.dark.type.accent.DEFAULT}
-                  size={20}
-                />
+                <FingerprintIcon color={colors.dark.backdrop} size={20} />
               ) : key === KEY_BACKSPACE ? (
-                <DeleteIcon color={colors.dark.type.accent.DEFAULT} size={20} />
+                <DeleteIcon color={colors.dark.backdrop} size={20} />
               ) : (
                 <Text
-                  style={tw`text-xl-bold text-gray-800 dark:text-dark-type-gray`}
+                  style={tw`font-bold text-gray-800 dark:text-dark-type-gray`}
                 >
                   {key}
                 </Text>
