@@ -11580,6 +11580,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-size-matters@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "react-native-size-matters@npm:0.4.2"
+  peerDependencies:
+    react-native: "*"
+  checksum: 65dac50cad8d03bd046c62e327edf1c162c650fa3320613343bb978ca4b83c8e4e61b0f528502a154a1d4e4baa6dc296799a57737177e3d3c77b64750f5d8076
+  languageName: node
+  linkType: hard
+
 "react-native-svg@npm:^15.8.0":
   version: 15.8.0
   resolution: "react-native-svg@npm:15.8.0"
@@ -11695,6 +11704,7 @@ __metadata:
     react-native-modal: ^13.0.1
     react-native-reanimated: ^3.16.1
     react-native-safe-area-context: ^4.14.0
+    react-native-size-matters: ^0.4.2
     react-native-svg: ^15.8.0
     release-it: ^15.0.0
     tailwind-merge: ^2.5.4

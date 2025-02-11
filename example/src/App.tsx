@@ -1,5 +1,4 @@
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable prettier/prettier */
 
 import '../global.css';
 // import { verifyInstallation } from 'nativewind';
@@ -67,8 +66,6 @@ export default function App() {
   ];
 
   // verifyInstallation();
-  
-
 
   const displayResult = () => {
     if (result! > 0) {
@@ -81,14 +78,18 @@ export default function App() {
     sampleModalRef?.current?.toggleModal();
   };
 
-  const onSelect = (val:string) => {
-    console.log('selected gender: ',val)
-    setGender(val)
-  }
+  const getPinValue = (pin: string) => {
+    console.log('PIN entered: ', pin);
+  };
+
+  const onSelect = (val: string) => {
+    console.log('selected gender: ', val);
+    setGender(val);
+  };
 
   const checkGender = () => {
-    selectRef?.current?.checkValidation()
-  }
+    selectRef?.current?.checkValidation();
+  };
 
   useEffect(() => {
     multiply(3, 7).then(setResult);
@@ -97,7 +98,7 @@ export default function App() {
   const tabs = [
     {
       label: 'Same Bank',
-      content: <View style={{backgroundColor: 'red', padding: 40}} />,
+      content: <View style={{ backgroundColor: 'red', padding: 40 }} />,
     },
     {
       label: 'Other Banks',
@@ -109,13 +110,12 @@ export default function App() {
     displayResult();
   });
 
-
   return (
-    <ScrollView contentContainerStyle={{ }}>
-      <View style={{flex:1, flexGrow: 1, marginTop:100}}>
+    <ScrollView contentContainerStyle={{}}>
+      <View style={{ flex: 1, flexGrow: 1, marginTop: 100 }}>
         <View style={styles.container}>
           <RNText>Result: {result}</RNText>
-          <AppButton onPress={() => { }} className="bg-[green]">
+          <AppButton onPress={() => {}} className="bg-[green]">
             AppButton
           </AppButton>
           {/* <Input.Input
@@ -129,38 +129,49 @@ export default function App() {
           {/* <Button variant="tonal">
           <AppText>Waw </AppText>
         </Button> */}
-          <AppText color='success' size={9} weight='regular' highContrast className="bg-[purple] text-red-100">
+          <AppText
+            color="success"
+            size={9}
+            weight="regular"
+            highContrast
+            className="bg-[purple] text-red-100"
+          >
             Alaro custom
           </AppText>
-
 
           <Slot.Pressable
             onPress={() => {
               console.log('Pressed111');
             }}
           >
-
             {/* <Text >Slot: {result}</Text> */}
             {/* The `onPress` prop is passed down to the `Pressable` */}
             {/* <Pressable /> */}
           </Slot.Pressable>
           {/* <KeyPad type="decimal" /> */}
-          <KeyPad type='decimal'/>
+          <KeyPad type="decimal" />
           <Avatar color="warning" initials="PP" size={2} />
-          <View style={{padding: 40, gap: 5}}>
-
-            <Button text='My Button SM ' size={'sm'} variant='solid' />
-            <Button text='My Button MD ' size={'md'} variant='solid' />
-            <Button text='My Button MD ' size={'lg'} variant='solid' />
-            <Button text='My Button XL ' size={'xl'} variant='solid' />
-            <Button text='My Button XL ' size={'2xl'} variant='solid' state='default' onPress={() => { console.log("issssok"); }} />
+          <View style={{ padding: 40, gap: 5 }}>
+            <Button text="My Button SM " size={'sm'} variant="solid" />
+            <Button text="My Button MD " size={'md'} variant="solid" />
+            <Button text="My Button MD " size={'lg'} variant="solid" />
+            <Button text="My Button XL " size={'xl'} variant="solid" />
+            <Button
+              text="My Button XL "
+              size={'2xl'}
+              variant="solid"
+              state="default"
+              onPress={() => {
+                console.log('issssok');
+              }}
+            />
           </View>
           <Tabs tabs={tabs} />
 
           <ListItem
             title="Chloe Olowo"
             subtitle="0903456798 | Vbank"
-            leadingIcon={<Avatar initials='AO' />}
+            leadingIcon={<Avatar initials="AO" />}
           />
 
           {/* <ListItem
@@ -176,11 +187,11 @@ export default function App() {
         /> */}
 
           <FileInput
-            acceptedFormats={["images"]}
+            acceptedFormats={['images']}
             onFileSelect={(file) => {
               console.log({ file });
-            }} />
-
+            }}
+          />
         </View>
 
         <Text style={styles.headerTitle}>Icons</Text>
@@ -193,14 +204,14 @@ export default function App() {
               <Icon iconType="svg" icon="eye-off" color="red" />
             </Row>
           </View>
-          <View style={{marginLeft: 10}}>
+          <View style={{ marginLeft: 10 }}>
             <Text style={styles.sectionTitle}>IonIcons</Text>
             <Row>
               <Icon iconType="IonIcons" icon="airplane" color="red" />
               <Icon iconType="IonIcons" icon="search" color="red" />
             </Row>
           </View>
-          <View style={{marginLeft: 10}}>
+          <View style={{ marginLeft: 10 }}>
             <Text style={styles.sectionTitle}>FontAwesome</Text>
             <Row>
               <Icon iconType="FontAwesome" icon="airplane" color="red" />
@@ -209,108 +220,105 @@ export default function App() {
           </View>
         </Row>
 
-        <Text style={[styles.headerTitle, {marginTop: 10}]}>Inputs</Text>
+        <Text style={[styles.headerTitle, { marginTop: 10 }]}>Inputs</Text>
         <Row>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Input
-              placeholder='Email address'
+              placeholder="Email address"
               value={value1}
-              onChangeText={(t) => { setValue1(t); }}
+              onChangeText={(t) => {
+                setValue1(t);
+              }}
             />
           </View>
         </Row>
 
         <Row>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <SearchInput
-              placeholder='Bank name, account name or account number'
-             value={value2}
+              placeholder="Bank name, account name or account number"
+              value={value2}
               onChange={setValue2}
             />
-
           </View>
         </Row>
 
         <Row>
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <Input
-              placeholder='Password'
+              placeholder="Password"
               secure={true}
               value={value3}
               onChange={setValue3}
             />
-
           </View>
         </Row>
 
-        <Text style={[styles.headerTitle, {marginTop: 10}]}>Code input</Text>
+        <Text style={[styles.headerTitle, { marginTop: 10 }]}>Code input</Text>
         <Row>
-          <View style={{width: '90%'}}>
+          <View style={{ width: '90%' }}>
             <CodeInput
             //onContinue={}
             />
           </View>
         </Row>
-        <Text style={[styles.headerTitle, {marginTop: 10}]}>PIN input modal</Text>
+        <Text style={[styles.headerTitle, { marginTop: 10 }]}>
+          PIN input modal
+        </Text>
         <Row>
-
-          <View style={{width: '90%'}}>
-            <TouchableOpacity
-              onPress={showModal}
-            >
+          <View style={{ width: '90%' }}>
+            <TouchableOpacity onPress={showModal}>
               <Text style={styles.sectionTitle}>Click to toggle modal</Text>
             </TouchableOpacity>
-
           </View>
         </Row>
 
-        <Text style={[styles.headerTitle, {marginTop: 10}]}>Dropdown</Text>
+        <Text style={[styles.headerTitle, { marginTop: 10 }]}>Dropdown</Text>
         <Row>
-        <View style={{width: '100%', marginBottom:10}}>
-          <Dropdown
-           title='Select gender'
-           validationRules='required'
-           data={genders}
-           value={gender}
-           onSelected={onSelect}
-           ref={selectRef}
+          <View style={{ width: '100%', marginBottom: 10 }}>
+            <Dropdown
+              title="Select gender"
+              validationRules="required"
+              data={genders}
+              value={gender}
+              onSelected={onSelect}
+              ref={selectRef}
+            />
+          </View>
+        </Row>
+        <Row>
+          <Button
+            text="Check gender"
+            size={'sm'}
+            variant="solid"
+            onPress={checkGender}
           />
-        </View>
-          
-        
         </Row>
-        <Row>
-        <Button text='Check gender' size={'sm'} variant='solid' onPress={checkGender} />
-        </Row>
-
-
 
         {/*<Text className="text-red-100 bg-[green]">Result: {result}</Text>*/}
 
         <PinInputModal
-          title='Enter your PIN'
-          onClose={showModal}
+          title="Confirm Transaction PIN"
+          onClose={() => sampleModalRef?.current?.closeModal()}
+          label="Enter PIN"
+          callback={getPinValue}
           ref={sampleModalRef}
         />
-
-      
       </View>
     </ScrollView>
   );
-
 }
 
 type RowProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 const Row = (props: RowProps) => {
   return (
-    <View style={{flexDirection: 'row', marginVertical: 5, padding: 5}}>
+    <View style={{ flexDirection: 'row', marginVertical: 5, padding: 5 }}>
       {props.children}
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -327,10 +335,9 @@ const styles = StyleSheet.create({
     marginTop: 2,
     marginBottom: 5,
     fontSize: 20,
-    fontWeight: '600'
+    fontWeight: '600',
   },
   sectionTitle: {
     marginTop: 2,
-
-  }
+  },
 });
