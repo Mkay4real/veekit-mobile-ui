@@ -18,6 +18,7 @@ export const Icon: FC<props> = ({ icon, iconType, color, size }) => {
     if (icon && iconType === 'IonIcons') {
       return (
         <IonIcons
+          //@ts-ignore
           name={icon}
           style={[tw`self-center`]}
           color={color}
@@ -28,6 +29,7 @@ export const Icon: FC<props> = ({ icon, iconType, color, size }) => {
     if (icon && iconType === 'FontAwesome') {
       return (
         <FontAwesomeIcon
+          //@ts-ignore
           name={icon}
           style={[tw`self-center`]}
           color={color}
