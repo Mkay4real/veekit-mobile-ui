@@ -186,7 +186,12 @@ export default function App() {
           order="reverse"
         /> */}
 
-          <FileInput />
+          <FileInput
+            acceptedFormats={['images']}
+            onFileSelect={(file) => {
+              console.log({ file });
+            }}
+          />
         </View>
 
         <Text style={styles.headerTitle}>Icons</Text>

@@ -5,6 +5,7 @@ import {type FC, useRef} from 'react';
 import {Input} from './input';
 import tw from '../../lib/tailwind';
 import SearchOutline from '../../images/svgs/search-outline';
+import colors from '../../theme/colors';
 
 type Props = {
   label?: string;
@@ -45,6 +46,7 @@ export const SearchInput: FC<Props> = ({
       inputStyle={[tw`bg-gray-100`]}
       contentWrapperStyle={[tw`bg-gray-100`]}
       onChangeText={handleOnChange}
+      placeholderTextColor={colors.dark.gray5}
       />
   );
 };

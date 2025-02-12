@@ -110,7 +110,7 @@ const dd: ForwardRefRenderFunction<InputHandler,DropdownProps> = ({
       <FormInputContainer
          onFocus={toggleModal}
          trailing={<ChevronDown/>}
-         editable={disabled}
+         editable={!disabled}
         >
             <View>
                 <Text style={[tw`mb-2`]}>{title}</Text>

@@ -135,20 +135,20 @@ module.exports = {
         bold: 'bold',
       }
 
-      sizes.forEach(size => {
-        styles.forEach(style => {
-          newUtilities[`.text-${size}-${style}`] = {
-            fontSize: (`fontSize.${size}`),
-            lineHeight: (`lineHeight.${size}`),
-            fontFamily: (`fontFamily.${styleFontFamilyMap[style]}`),
-            letterSpacing: (`letterSpacing.${size}`),
-            // fontSize: theme(`fontSize.${size}`),
-            // lineHeight: theme(`lineHeight.${size}`),
-            // fontFamily: theme(`fontFamily.${styleFontFamilyMap[style]}`),
-            // letterSpacing: theme(`letterSpacing.${size}`),
-          }
-        })
-      })
+      // sizes.forEach(size => {
+      //   styles.forEach(style => {
+      //     newUtilities[`.text-${size}-${style}`] = {
+      //       fontSize: (`fontSize.${size}`),
+      //       lineHeight: (`lineHeight.${size}`),
+      //       fontFamily: (`fontFamily.${styleFontFamilyMap[style]}`),
+      //       letterSpacing: (`letterSpacing.${size}`),
+      //       // fontSize: theme(`fontSize.${size}`),
+      //       // lineHeight: theme(`lineHeight.${size}`),
+      //       // fontFamily: theme(`fontFamily.${styleFontFamilyMap[style]}`),
+      //       // letterSpacing: theme(`letterSpacing.${size}`),
+      //     }
+      //   })
+      // })
 
       addUtilities(newUtilities)
 
