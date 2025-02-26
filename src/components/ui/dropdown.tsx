@@ -46,6 +46,7 @@ const dd: ForwardRefRenderFunction<InputHandler,DropdownProps> = ({
   disabled=false
 },ref) => {
   const [selectedValue, setSelectedValue] = useState<string>('');
+  const [selectedItem, setSelectedItem] = useState<SelectOption>();
   const [error, setError] = useState(false);
   const selectRef = useRef<DropdownModalRef>(null);
 
@@ -53,8 +54,11 @@ const dd: ForwardRefRenderFunction<InputHandler,DropdownProps> = ({
     selectRef?.current?.toggleModal();
   };
 
-  const onSelect = (v:string) => {
+  const onSelect = (v:string, item?: SelectOption) => {
+    console.log({v, item});
+    
     setSelectedValue(v)
+    setSelectedItem(item);
   }
 
   const validate = () => {
@@ -114,7 +118,7 @@ const dd: ForwardRefRenderFunction<InputHandler,DropdownProps> = ({
         >
             <View>
                 <Text style={[tw`mb-2`]}>{title}</Text>
-                <Text style={[tw`text-lg-body capitalize`]}>{selectedValue}</Text>
+                <Text style={[tw`text-lg-body`]}>{selectedItem?.label}</Text>
             </View>
         </FormInputContainer>
         {renderErrorMessage()}

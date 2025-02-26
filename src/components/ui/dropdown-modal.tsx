@@ -26,7 +26,7 @@ type props = {
   modalTitle?: string,
   data: SelectOption[],
   onClose: () => void,
-  onSelect?: (item: string) => void,
+  onSelect?: (value: string, item?: SelectOption) => void,
   searchPlaceholder: string
 };
 
@@ -51,9 +51,9 @@ const ddm: ForwardRefRenderFunction<DropdownModalRef, props> = ({
   const [searchValue, setSearchValue] = useState('')
   const [filteredList, setFilteredList] = useState<SelectOption[]>([])
 
-  const handleSelect = (val = '') => {
+  const handleSelect = (val: string, item: SelectOption) => {
     console.log('val currently: ', val);
-    typeof onSelect === 'function' && onSelect(val)
+    typeof onSelect === 'function' && onSelect(val, item)
     typeof onClose === 'function' && onClose()
   }
 
@@ -72,7 +72,7 @@ const ddm: ForwardRefRenderFunction<DropdownModalRef, props> = ({
                 style={[
                   tw`w-full p-5 border-b border-gray-300 justify-content-center`
                 ]}
-                onPress={() => { handleSelect(item.value) }}
+                onPress={() => { handleSelect(item.value, item) }}
               >
                 <Text style={[tw`text-md-title`]}>{item.label}</Text>
               </TouchableOpacity>

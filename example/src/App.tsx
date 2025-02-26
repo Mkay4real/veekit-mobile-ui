@@ -61,8 +61,9 @@ export default function App() {
   const selectRef = useRef<InputHandler>(null);
 
   const genders: SelectOption[] = [
-    { label: 'Male', value: 'male' },
-    { label: 'Female', value: 'female' },
+    { label: 'Male Test', value: 'm' },
+    { label: 'Female', value: 'f' },
+    { label: 'Binary', value: 'b' },
   ];
 
   // verifyInstallation();
