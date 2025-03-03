@@ -172,6 +172,7 @@ export default function App() {
           <ListItem
             title="Chloe Olowo"
             subtitle="0903456798 | Vbank"
+            titleStyle={{ color: 'red' }}
             leadingIcon={<Avatar initials="AO" />}
           />
 
@@ -186,13 +187,14 @@ export default function App() {
           subtitle="₦500.00"
           order="reverse"
         /> */}
-
-          <FileInput
-            acceptedFormats={['images']}
-            onFileSelect={(file) => {
-              console.log({ file });
-            }}
-          />
+          <View style={{ padding: 30 }}>
+            <FileInput
+              acceptedFormats={['images']}
+              onFileSelect={(file) => {
+                console.log({ file });
+              }}
+            />
+          </View>
         </View>
 
         <Text style={styles.headerTitle}>Icons</Text>
