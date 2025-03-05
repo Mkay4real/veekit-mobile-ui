@@ -259,9 +259,10 @@ export default function App() {
 
         <Text style={[styles.headerTitle, { marginTop: 10 }]}>Code input</Text>
         <Row>
-          <View style={{ width: '90%' }}>
+          <View style={{}}>
             <CodeInput
-            //onContinue={}
+              length={6}
+              //onContinue={}
             />
           </View>
         </Row>
