@@ -60,11 +60,16 @@ export default function App() {
 
   const selectRef = useRef<InputHandler>(null);
 
-  const genders: SelectOption[] = [
-    { label: 'Male Test', value: 'm' },
-    { label: 'Female', value: 'f' },
-    { label: 'Binary', value: 'b' },
-  ];
+  const [genders, setGenders] = useState<SelectOption[]>([]);
+  useEffect(() => {
+    setTimeout(() => {
+      setGenders([
+        { label: 'Male', value: 'm' },
+        { label: 'Female', value: 'f' },
+        { label: 'Binary', value: 'b' },
+      ]);
+    }, 1000);
+  }, []);
 
   // verifyInstallation();
 

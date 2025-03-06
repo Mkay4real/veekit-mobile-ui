@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prettier/prettier */
-
 import {
   forwardRef,
   useEffect,
   useState,
+  useCallback,
   type ForwardRefRenderFunction,
 } from 'react';
 import {
@@ -19,8 +19,6 @@ import { ModalCard } from './modal-card';
 import tw from '../../lib/tailwind';
 import type { SelectOption } from '../../types/SelectOption';
 import { SearchInput } from './search-input';
-
-
 type props = {
   title: string,
   modalTitle?: string,
@@ -29,16 +27,10 @@ type props = {
   onSelect?: (value: string, item?: SelectOption) => void,
   searchPlaceholder: string
 };
-
-
-
 export interface DropdownModalRef {
   toggleModal(): void,
   closeModal(): void
 }
-
-
-
 const ddm: ForwardRefRenderFunction<DropdownModalRef, props> = ({
   title = '',
   modalTitle = '',
@@ -47,19 +39,43 @@ const ddm: ForwardRefRenderFunction<DropdownModalRef, props> = ({
   onSelect,
   searchPlaceholder
 }, ref) => {
-
   const [searchValue, setSearchValue] = useState('')
   const [filteredList, setFilteredList] = useState<SelectOption[]>([])
-
   const handleSelect = (val: string, item: SelectOption) => {
-    console.log('val currently: ', val);
     typeof onSelect === 'function' && onSelect(val, item)
     typeof onClose === 'function' && onClose()
   }
 
-  const search = (val = '') => {
-    console.log('searching for: ', val)
-  }
+  const search = useCallback((val = '') => {
+    if (!val.trim()) {
+      setFilteredList([
+        { label: "Select an option", value: 'none' },
+        ...data
+      ])
+      return
+    }
+    const filtered = data.filter(item => 
+      item.label.toLowerCase().includes(val.toLowerCase()) ||
+      item.value.toLowerCase().includes(val.toLowerCase())
+    )
+    
+    setFilteredList([
+      { label: "Select an option", value: 'none' },
+      ...filtered
+    ])
+  }, [data]);
+
+  useEffect(() => {
+    // Initialize filtered list with data
+    setFilteredList([
+      { label: "Select an option", value: 'none' },
+      ...data
+    ])
+  }, [data])
+  useEffect(() => {
+    // Handle search when searchValue changes
+    search(searchValue)
+  }, [searchValue, search])
 
   const renderOptions = () => {
     if (filteredList.length > 0) {
@@ -84,47 +100,28 @@ const ddm: ForwardRefRenderFunction<DropdownModalRef, props> = ({
     return null
   }
 
-  useEffect(() => {
-    if (filteredList.length < 1) {
-      setFilteredList([
-        { label: "Select an option", value: 'none' },
-        ...data
-      ])
-    }
-  }, [data, filteredList])
-
-  useEffect(() => {
-    search(searchValue)
-  }, [searchValue])
-
-  const {  height: DEVICE_HEIGHT} = useWindowDimensions ()
-
+  const { height: DEVICE_HEIGHT } = useWindowDimensions()
   return (
     <GenericModal
       onClose={onClose}
       ref={ref}
     >
       <ModalCard title={modalTitle} bottom={0} hasCloseIcon={true} onClose={onClose}>
-        <View style={[tw`justify-between `, {maxHeight: DEVICE_HEIGHT * 0.7}]}>
-          <Text style={[tw`text-lg-bold `]}>{title}</Text>
-
+        <View style={[tw`justify-between`, {maxHeight: DEVICE_HEIGHT * 0.7}]}>
+          <Text style={[tw`text-lg-bold`]}>{title}</Text>
           <View style={[tw`mb-5`]}>
             <SearchInput
               placeholder={searchPlaceholder}
               value={searchValue}
               onChange={setSearchValue}
             />
-
             <View style={[tw`mt-2 divide-y`]}>
               {renderOptions()}
             </View>
-
           </View>
         </View>
       </ModalCard>
     </GenericModal>
   );
 };
-
-
 export const DropdownModal = forwardRef<DropdownModalRef, props>(ddm);
