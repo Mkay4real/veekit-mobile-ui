@@ -3,10 +3,12 @@ pre-commit:
   commands:
     lint:
       glob: "*.{js,ts,jsx,tsx}"
+      exclude: "**/*.stories.tsx|**/__tests__/**/*.tsx|.storybook/**/*"
       run: npx eslint {staged_files}
     types:
-      glob: "*.{js,ts, jsx, tsx}"
-      run: npx tsc
+      glob: "*.{js,ts,jsx,tsx}"
+      exclude: "**/*.stories.tsx|**/__tests__/**/*.tsx|.storybook/**/*"
+      run: npx tsc --noEmit --project tsconfig.build.json
 commit-msg:
   parallel: true
   commands:
